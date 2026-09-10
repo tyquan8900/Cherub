@@ -1,0 +1,13 @@
+{
+  "method": "index term -> every referenced location -> domain section -> tables/figures -> glossary/acronyms -> observed relationship",
+  "terms": [
+    {"term":"metrics","concepts":["Executive reporting","Program metrics","Risk monitoring","IR metrics"],"domains":[1,2,3,4]},
+    {"term":"risk management framework","concepts":["Risk assessment","Risk treatment","Risk monitoring"],"domains":[1,2]},
+    {"term":"business process owners","concepts":["Business risk owner","Decision rights"],"domains":[1,2]},
+    {"term":"recovery strategy","concepts":["BIA","RTO","RPO","Recovery","Recovery testing"],"domains":[4]},
+    {"term":"incident classification","concepts":["Incident classification","Containment authority","Notification"],"domains":[4]},
+    {"term":"lessons learned","concepts":["Post-incident review","Corrective action","Risk monitoring","Program objectives"],"domains":[2,3,4]},
+    {"term":"control strength","concepts":["Control effectiveness","Residual risk"],"domains":[2,3]},
+    {"term":"legal regulatory requirements","concepts":["Compliance scope","Data protection","Notification"],"domains":[1,3,4]}
+  ]
+}
