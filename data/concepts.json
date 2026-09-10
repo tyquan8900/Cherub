@@ -1,0 +1,6 @@
+{
+  "D1": ["Business objectives","Security strategy","Governance framework","Decision rights","Risk appetite","Risk tolerance","Business risk owner","Policy governance","Business case","Executive reporting"],
+  "D2": ["Threat","Vulnerability","Risk assessment","Risk criteria","Risk treatment","Residual risk","Risk register","Risk escalation","Risk monitoring","Third-party assurance"],
+  "D3": ["Program objectives","Security architecture","Control design","Control implementation","Control operation","Control effectiveness","Program metrics","Awareness effectiveness","Change integration","Data protection","Resilience","Vendor integration"],
+  "D4": ["Incident readiness","Incident classification","Evidence handling","Containment authority","Notification","Eradication","Recovery","BIA","RTO","RPO","Recovery testing","Post-incident review","Corrective action"]
+}
