@@ -15,12 +15,12 @@
   <main class="main">
     <div class="card">
       <h1>Welcome to Cherub</h1>
-      <p class="muted">Sign in with your GitHub account. Cherub will verify that you are an authorized user, load your private progress, and start the study engine.</p>
+      <p class="muted">Sign in with your GitHub account. Cherub verifies that you are one of the authorized users, loads your private progress, and starts the study engine.</p>
       <button id="login" class="login" type="button" aria-label="Sign in with GitHub">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .7a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.3c-3.4.7-4.1-1.4-4.1-1.4-.5-1.4-1.3-1.8-1.3-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .7Z"/></svg>
         Sign in with GitHub
       </button>
-      <div id="setup" class="setup hidden"><strong>One-time setup is not finished yet.</strong><br>Cherub's secure GitHub OAuth callback must be deployed and configured before this button can sign you in.</div>
+      <div id="setup" class="setup hidden"><strong>One-time setup is not finished yet.</strong><br>The secure GitHub sign-in service still needs its OAuth Client ID, secret, allowed users, and deployed URL.</div>
       <div id="error" class="error hidden"></div>
     </div>
   </main>
@@ -28,24 +28,29 @@
 <div id="userbar" class="userbar hidden"></div>
 <iframe id="engine" class="hidden" title="Cherub study engine"></iframe>
 <script>
-/*
-  Cherub GitHub OAuth front end.
-  AUTH_BASE must point to the deployed auth-worker.js service.
-  The OAuth Client Secret is NEVER placed in this file.
-*/
 const AUTH_BASE='__CHERUB_AUTH_BASE__';
 const ENGINE_URL='engine.html';
+const PROGRESS_KEY='cherub-progress-v1';
+const SESSION_KEY='cherub-session-v1';
 const $=id=>document.getElementById(id);
+let remoteSha=null,lastSnapshot='',syncTimer=null,syncBusy=false,currentUser='';
 const isConfigured=()=>AUTH_BASE && !AUTH_BASE.includes('__CHERUB_');
 function err(msg){$('error').textContent=msg;$('error').classList.remove('hidden')}
-function launch(user){$('gate').classList.add('hidden');$('userbar').textContent=user?`GitHub: ${user}`:'Cherub';$('userbar').classList.remove('hidden');$('engine').classList.remove('hidden');$('engine').src=ENGINE_URL}
+function localDoc(){let progress={answers:[]},session=null;try{progress=JSON.parse(localStorage.getItem(PROGRESS_KEY)||'{"answers":[]}')}catch{}try{session=JSON.parse(localStorage.getItem(SESSION_KEY)||'null')}catch{}return{version:3,user:currentUser,progress,session,updated_at:new Date().toISOString()}}
+function snap(){const x=localDoc();delete x.updated_at;return JSON.stringify(x)}
+function applyRemote(doc){if(doc?.progress)localStorage.setItem(PROGRESS_KEY,JSON.stringify(doc.progress));else localStorage.setItem(PROGRESS_KEY,JSON.stringify({answers:[]}));if(doc?.session)localStorage.setItem(SESSION_KEY,JSON.stringify(doc.session));else localStorage.removeItem(SESSION_KEY);lastSnapshot=snap()}
 async function session(){if(!isConfigured())return null;try{const r=await fetch(`${AUTH_BASE}/auth/session`,{credentials:'include'});if(!r.ok)return null;return await r.json()}catch{return null}}
+async function pull(){const r=await fetch(`${AUTH_BASE}/api/progress`,{credentials:'include',cache:'no-store'});if(!r.ok)throw new Error(`Progress load failed (${r.status})`);const j=await r.json();remoteSha=j.sha||null;if(j.exists&&j.progress)applyRemote(j.progress);else lastSnapshot='';return j}
+async function push(force=false){if(syncBusy||!currentUser)return;const now=snap();if(!force&&now===lastSnapshot)return;syncBusy=true;try{let r=await fetch(`${AUTH_BASE}/api/progress`,{method:'PUT',credentials:'include',headers:{'content-type':'application/json'},body:JSON.stringify({progress:localDoc(),sha:remoteSha})});if(r.status===409){await pull();r=await fetch(`${AUTH_BASE}/api/progress`,{method:'PUT',credentials:'include',headers:{'content-type':'application/json'},body:JSON.stringify({progress:localDoc(),sha:remoteSha})})}if(!r.ok)throw new Error(`Progress save failed (${r.status})`);const j=await r.json();remoteSha=j.sha||remoteSha;lastSnapshot=snap();$('userbar').textContent=`GitHub: ${currentUser} • synced`}catch(e){$('userbar').textContent=`GitHub: ${currentUser} • sync error`;console.error(e)}finally{syncBusy=false}}
+function launch(user){currentUser=user;$('gate').classList.add('hidden');$('userbar').textContent=`GitHub: ${user} • synced`;$('userbar').classList.remove('hidden');$('engine').classList.remove('hidden');$('engine').src=ENGINE_URL;clearInterval(syncTimer);syncTimer=setInterval(()=>push(false),5000)}
 $('login').onclick=()=>{if(!isConfigured()){$('setup').classList.remove('hidden');return}const back=encodeURIComponent(location.href.split('?')[0].split('#')[0]);location.href=`${AUTH_BASE}/auth/login?return_to=${back}`}
+window.addEventListener('pagehide',()=>push(false));
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')push(false)});
+window.addEventListener('storage',e=>{if(e.key===PROGRESS_KEY||e.key===SESSION_KEY)push(false)});
 (async()=>{
-  const qs=new URLSearchParams(location.search);
-  if(qs.get('auth_error'))err(qs.get('auth_error'));
+  const qs=new URLSearchParams(location.search);if(qs.get('auth_error'))err(qs.get('auth_error'));
   const s=await session();
-  if(s?.authenticated&&s?.authorized){launch(s.login);return}
+  if(s?.authenticated&&s?.authorized){currentUser=s.login;$('status').textContent=`Loading ${s.login}…`;try{await pull();if(!remoteSha)await push(true);launch(s.login)}catch(e){err(e.message)}return}
   if(s?.authenticated&&!s?.authorized)err('This GitHub account is not authorized for Cherub.');
 })();
 </script>
