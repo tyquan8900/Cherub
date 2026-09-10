@@ -1,0 +1,13 @@
+'use strict';
+(async()=>{
+const requiredIds=['dashboard','practice','map','progress','schedule','notes','resources','settings','domainCards','startPretest','startAdaptive','startExam','quizHost','progressContent','mapContent'];
+const requiredFiles=['data/manifest.json','data/blueprint.json','data/relationships.json','data/concepts.json','data/index-map.json','data/glossary.json','data/acronyms.json','data/misconceptions.json','data/source-references.json','data/test-plan.json'];
+const result={time:new Date().toISOString(),dom:true,storage:true,files:{},runtime:!!window.CHERUB_RUNTIME_LOADED,ok:true,errors:[]};
+for(const id of requiredIds)if(!document.getElementById(id)){result.dom=false;result.ok=false;result.errors.push(`Missing DOM #${id}`)}
+try{const k='cherub.health.test';localStorage.setItem(k,'ok');if(localStorage.getItem(k)!=='ok')throw Error('roundtrip');localStorage.removeItem(k)}catch(e){result.storage=false;result.ok=false;result.errors.push('Browser storage unavailable')}
+for(const f of requiredFiles){try{const r=await fetch(`${f}?t=${Date.now()}`,{cache:'no-store'});if(!r.ok)throw Error(String(r.status));await r.json();result.files[f]=true}catch(e){result.files[f]=false;result.ok=false;result.errors.push(`Cannot load ${f}`)}}
+try{const r=await fetch(`js/runtime.js?t=${Date.now()}`,{cache:'no-store'}),t=await r.text();for(const marker of ['BANKS={pretest','week3:makeBank','week4:makeBank','week5:makeBank','week6:makeBank','completedPretest','reasonCorrect','eliminationCorrect'])if(!t.includes(marker)){result.ok=false;result.errors.push(`Runtime marker missing: ${marker}`)}}catch{result.ok=false;result.errors.push('Runtime source check failed')}
+window.CHERUB_HEALTH=result;localStorage.setItem('cherub.health.last',JSON.stringify(result));
+function badge(){const root=document.querySelector('#settings .placeholder');if(!root)return;let old=document.getElementById('healthCard');if(old)old.remove();const d=document.createElement('div');d.id='healthCard';d.className='card progresscard';d.style.marginTop='12px';d.innerHTML=`<h3>Engine Health</h3><p><b>${result.ok?'Operational':'Needs attention'}</b> • runtime ${result.runtime?'loaded':'not loaded'} • storage ${result.storage?'ready':'blocked'} • data ${Object.values(result.files).filter(Boolean).length}/${requiredFiles.length}</p>${result.errors.length?`<div class="tiny">${result.errors.join(' • ')}</div>`:'<div class="tiny">All startup checks passed.</div>'}`;root.appendChild(d)}
+const orig=window.show;if(typeof orig==='function')window.show=function(id){orig(id);if(id==='settings')setTimeout(badge,0)};
+})();
