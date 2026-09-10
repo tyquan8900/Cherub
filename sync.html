@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#111827">
 <title>Cherub Sync</title>
 <style>
-:root{font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#111827;background:#f3f4f6}*{box-sizing:border-box}body{margin:0}.shell{min-height:100vh;display:flex;flex-direction:column}.bar{background:#111827;color:#fff;padding:10px 14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;position:sticky;top:0;z-index:10}.brand{font-weight:800;margin-right:auto}.status{font-size:.86rem;opacity:.85}.bar input{min-width:250px;max-width:420px;flex:1;padding:9px 10px;border-radius:9px;border:1px solid #4b5563;background:#fff;color:#111827}.bar button{border:0;border-radius:9px;padding:9px 12px;cursor:pointer;font:inherit}.primary{background:#fff;color:#111827}.secondary{background:#374151;color:#fff}.danger{background:#7f1d1d;color:#fff}.remember{font-size:.82rem;display:flex;gap:6px;align-items:center}.notice{padding:8px 14px;background:#fffbeb;border-bottom:1px solid #fde68a;font-size:.83rem;color:#713f12}.hidden{display:none}iframe{border:0;width:100%;flex:1;min-height:calc(100vh - 58px);background:#fff}.setup{max-width:700px;margin:32px auto;padding:0 16px}.card{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:20px;box-shadow:0 8px 24px rgba(0,0,0,.05)}code{background:#f3f4f6;border-radius:6px;padding:2px 5px}@media(max-width:700px){.bar{align-items:stretch}.brand{width:100%}.bar input{min-width:0;width:100%}}
+:root{font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#111827;background:#f3f4f6}*{box-sizing:border-box}body{margin:0}.shell{min-height:100vh;display:flex;flex-direction:column}.bar{background:#111827;color:#fff;padding:10px 14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;position:sticky;top:0;z-index:10}.brand{font-weight:800;margin-right:auto}.status{font-size:.86rem;opacity:.9}.bar input{min-width:250px;max-width:420px;flex:1;padding:9px 10px;border-radius:9px;border:1px solid #4b5563;background:#fff;color:#111827}.bar button{border:0;border-radius:9px;padding:9px 12px;cursor:pointer;font:inherit}.primary{background:#fff;color:#111827}.secondary{background:#374151;color:#fff}.danger{background:#7f1d1d;color:#fff}.remember{font-size:.82rem;display:flex;gap:6px;align-items:center}.notice{padding:8px 14px;background:#fffbeb;border-bottom:1px solid #fde68a;font-size:.83rem;color:#713f12}.hidden{display:none}iframe{border:0;width:100%;flex:1;min-height:calc(100vh - 58px);background:#fff}.setup{max-width:760px;margin:32px auto;padding:0 16px}.card{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:20px;box-shadow:0 8px 24px rgba(0,0,0,.05)}code{background:#f3f4f6;border-radius:6px;padding:2px 5px}.who{font-weight:700}@media(max-width:700px){.bar{align-items:stretch}.brand{width:100%}.bar input{min-width:0;width:100%}}
 </style>
 </head>
 <body>
@@ -20,42 +20,48 @@
     <button id="sync" class="secondary hidden">Sync now</button>
     <button id="disconnect" class="danger hidden">Disconnect</button>
   </div>
-  <div id="notice" class="notice">Your GitHub token stays in this browser only. Cherub writes progress to <code>data/progress.json</code> in your private repository.</div>
+  <div id="notice" class="notice">Each authorized GitHub user gets a separate private progress file under <code>users/&lt;github-username&gt;/progress.json</code>. Tokens stay only in that user's browser.</div>
   <div id="setup" class="setup">
     <div class="card">
-      <h2 style="margin-top:0">Connect private progress</h2>
-      <p>Create a fine-grained GitHub personal access token restricted to <strong>tyquan8900/Cherub</strong> with <strong>Contents: Read and write</strong>. Paste it above, then choose <strong>Connect & Load</strong>.</p>
-      <p>The token is never written into the repository. If “Remember on this device” is off, it lasts only for this browser tab/session.</p>
+      <h2 style="margin-top:0">Connect your private progress</h2>
+      <p>Use your own fine-grained GitHub personal access token restricted to <strong>tyquan8900/Cherub</strong> with <strong>Contents: Read and write</strong>.</p>
+      <p>After authentication, Cherub identifies the GitHub username and automatically loads or creates <code>users/&lt;username&gt;/progress.json</code>. The token is never written into the repository.</p>
+      <p><strong>Two users can use the same Cherub code without sharing progress or sharing tokens.</strong></p>
     </div>
   </div>
   <iframe id="app" title="Cherub" class="hidden"></iframe>
 </div>
 <script>
-const OWNER='tyquan8900', REPO='Cherub', BRANCH='main', PATH='data/progress.json';
-const PROGRESS_KEY='cherub-progress-v1', SESSION_KEY='cherub-session-v1', TOKEN_KEY='cherub-github-token-v1';
-const API=`https://api.github.com/repos/${OWNER}/${REPO}/contents/${PATH}`;
+const OWNER='tyquan8900', REPO='Cherub', BRANCH='main';
+const PROGRESS_KEY='cherub-progress-v1', SESSION_KEY='cherub-session-v1', TOKEN_KEY='cherub-github-token-v2';
+const REPO_API=`https://api.github.com/repos/${OWNER}/${REPO}`;
 const $=id=>document.getElementById(id);
 let token=sessionStorage.getItem(TOKEN_KEY)||localStorage.getItem(TOKEN_KEY)||'';
-let remoteSha=null,lastSnapshot='',syncTimer=null,busy=false;
+let username='',remoteSha=null,lastSnapshot='',syncTimer=null,busy=false,initialized=false;
 $('token').value=token;
 $('remember').checked=!!localStorage.getItem(TOKEN_KEY);
 function setStatus(text){$('status').textContent=text}
-function headers(){return {'Accept':'application/vnd.github+json','Authorization':`Bearer ${token}`,'X-GitHub-Api-Version':'2026-03-10'}}
+function headers(){return {'Accept':'application/vnd.github+json','Authorization':`Bearer ${token}`,'X-GitHub-Api-Version':'2022-11-28'}}
 function decode64(s){const bin=atob((s||'').replace(/\n/g,''));const bytes=Uint8Array.from(bin,c=>c.charCodeAt(0));return new TextDecoder().decode(bytes)}
 function encode64(s){const bytes=new TextEncoder().encode(s);let bin='';for(const b of bytes)bin+=String.fromCharCode(b);return btoa(bin)}
-function localPayload(){let progress,session;try{progress=JSON.parse(localStorage.getItem(PROGRESS_KEY)||'{"answers":[]}')}catch{progress={answers:[]}}try{session=JSON.parse(localStorage.getItem(SESSION_KEY)||'null')}catch{session=null}return {version:1,progress,session,updated_at:new Date().toISOString()}}
+function safeUser(s){return String(s||'').replace(/[^A-Za-z0-9-]/g,'')}
+function userPath(){if(!username)throw new Error('GitHub user not identified');return `users/${safeUser(username)}/progress.json`}
+function api(){return `${REPO_API}/contents/${userPath()}`}
+function localPayload(){let progress,session;try{progress=JSON.parse(localStorage.getItem(PROGRESS_KEY)||'{"answers":[]}')}catch{progress={answers:[]}}try{session=JSON.parse(localStorage.getItem(SESSION_KEY)||'null')}catch{session=null}return {version:2,user:username,progress,session,updated_at:new Date().toISOString()}}
 function snapshot(){const p=localPayload();delete p.updated_at;return JSON.stringify(p)}
 function applyRemote(doc){if(doc?.progress)localStorage.setItem(PROGRESS_KEY,JSON.stringify(doc.progress));else localStorage.setItem(PROGRESS_KEY,JSON.stringify({answers:[]}));if(doc?.session)localStorage.setItem(SESSION_KEY,JSON.stringify(doc.session));else localStorage.removeItem(SESSION_KEY);lastSnapshot=snapshot()}
-async function getRemote(){const r=await fetch(`${API}?ref=${encodeURIComponent(BRANCH)}&t=${Date.now()}`,{headers:headers(),cache:'no-store'});if(!r.ok)throw new Error(r.status===401?'Token rejected':r.status===404?'Repository or progress file not accessible':`GitHub read failed (${r.status})`);const j=await r.json();remoteSha=j.sha;return JSON.parse(decode64(j.content))}
-async function putRemote(payload){const body={message:'Sync Cherub study progress',content:encode64(JSON.stringify(payload,null,2)),branch:BRANCH};if(remoteSha)body.sha=remoteSha;let r=await fetch(API,{method:'PUT',headers:{...headers(),'Content-Type':'application/json'},body:JSON.stringify(body)});if(r.status===409){const latest=await getRemote();const merged=merge(latest,payload);body.content=encode64(JSON.stringify(merged,null,2));body.sha=remoteSha;r=await fetch(API,{method:'PUT',headers:{...headers(),'Content-Type':'application/json'},body:JSON.stringify(body)})}if(!r.ok)throw new Error(`GitHub save failed (${r.status})`);const j=await r.json();remoteSha=j.content.sha;lastSnapshot=snapshot();setStatus('Synced '+new Date().toLocaleTimeString())}
-function merge(a,b){const aa=Array.isArray(a?.progress?.answers)?a.progress.answers:[],bb=Array.isArray(b?.progress?.answers)?b.progress.answers:[];const map=new Map();for(const x of [...aa,...bb])map.set(`${x.id||''}|${x.ts||''}|${x.d||''}|${x.confidence||''}`,x);let session=b.session||a.session||null;if(a.session&&b.session&&a.session.session?.started===b.session.session?.started)session=(Number(a.session.index||0)>Number(b.session.index||0))?a.session:b.session;return {version:1,progress:{...(a.progress||{}),...(b.progress||{}),answers:[...map.values()].sort((x,y)=>(x.ts||0)-(y.ts||0))},session,updated_at:new Date().toISOString()}}
-async function syncNow(force=false){if(!token||busy)return;const snap=snapshot();if(!force&&snap===lastSnapshot)return;busy=true;setStatus('Syncing…');try{await putRemote(localPayload())}catch(e){setStatus(e.message)}finally{busy=false}}
-function launch(){ $('setup').classList.add('hidden');$('app').classList.remove('hidden');$('sync').classList.remove('hidden');$('disconnect').classList.remove('hidden');if(!$('app').src)$('app').src='index.html'}
-async function connect(){token=$('token').value.trim();if(!token){setStatus('Enter a token');return}if($('remember').checked){localStorage.setItem(TOKEN_KEY,token);sessionStorage.removeItem(TOKEN_KEY)}else{sessionStorage.setItem(TOKEN_KEY,token);localStorage.removeItem(TOKEN_KEY)}setStatus('Loading from GitHub…');try{const remote=await getRemote();applyRemote(remote);launch();setStatus('Connected • progress loaded');clearInterval(syncTimer);syncTimer=setInterval(()=>syncNow(false),10000)}catch(e){setStatus(e.message)}}
-function disconnect(){clearInterval(syncTimer);syncTimer=null;token='';remoteSha=null;sessionStorage.removeItem(TOKEN_KEY);localStorage.removeItem(TOKEN_KEY);$('token').value='';$('remember').checked=false;$('app').src='';$('app').classList.add('hidden');$('setup').classList.remove('hidden');$('sync').classList.add('hidden');$('disconnect').classList.add('hidden');setStatus('Disconnected')}
+async function identifyUser(){const r=await fetch('https://api.github.com/user',{headers:headers(),cache:'no-store'});if(!r.ok)throw new Error(r.status===401?'Token rejected':'Unable to identify GitHub user');const j=await r.json();username=safeUser(j.login);if(!username)throw new Error('GitHub username unavailable');return username}
+async function getRemote(){const r=await fetch(`${api()}?ref=${encodeURIComponent(BRANCH)}&t=${Date.now()}`,{headers:headers(),cache:'no-store'});if(r.status===404){remoteSha=null;return null}if(!r.ok)throw new Error(r.status===401?'Token rejected':r.status===403?'Token lacks repository write access':`GitHub read failed (${r.status})`);const j=await r.json();remoteSha=j.sha;return JSON.parse(decode64(j.content))}
+async function putRemote(payload){const body={message:`Sync Cherub progress for ${username}`,content:encode64(JSON.stringify(payload,null,2)),branch:BRANCH};if(remoteSha)body.sha=remoteSha;let r=await fetch(api(),{method:'PUT',headers:{...headers(),'Content-Type':'application/json'},body:JSON.stringify(body)});if(r.status===409||r.status===422){const latest=await getRemote();if(latest){const merged=merge(latest,payload);body.content=encode64(JSON.stringify(merged,null,2));body.sha=remoteSha;r=await fetch(api(),{method:'PUT',headers:{...headers(),'Content-Type':'application/json'},body:JSON.stringify(body)})}}if(!r.ok){let detail='';try{detail=(await r.json()).message||''}catch{}throw new Error(`GitHub save failed (${r.status})${detail?': '+detail:''}`)}const j=await r.json();remoteSha=j.content.sha;lastSnapshot=snapshot();setStatus(`${username} • synced ${new Date().toLocaleTimeString()}`)}
+function merge(a,b){const aa=Array.isArray(a?.progress?.answers)?a.progress.answers:[],bb=Array.isArray(b?.progress?.answers)?b.progress.answers:[];const map=new Map();for(const x of [...aa,...bb])map.set(`${x.id||''}|${x.ts||''}|${x.d||''}|${x.confidence||''}`,x);let session=b.session||a.session||null;if(a.session&&b.session&&a.session.session?.started===b.session.session?.started)session=(Number(a.session.index||0)>Number(b.session.index||0))?a.session:b.session;return {version:2,user:username,progress:{...(a.progress||{}),...(b.progress||{}),answers:[...map.values()].sort((x,y)=>(x.ts||0)-(y.ts||0))},session,updated_at:new Date().toISOString()}}
+async function syncNow(force=false){if(!token||!username||busy)return;const snap=snapshot();if(!force&&snap===lastSnapshot)return;busy=true;setStatus(`${username} • syncing…`);try{await putRemote(localPayload())}catch(e){setStatus(e.message)}finally{busy=false}}
+function launch(){$('setup').classList.add('hidden');$('app').classList.remove('hidden');$('sync').classList.remove('hidden');$('disconnect').classList.remove('hidden');if(!$('app').src)$('app').src='index.html'}
+async function connect(){token=$('token').value.trim();if(!token){setStatus('Enter a token');return}if($('remember').checked){localStorage.setItem(TOKEN_KEY,token);sessionStorage.removeItem(TOKEN_KEY)}else{sessionStorage.setItem(TOKEN_KEY,token);localStorage.removeItem(TOKEN_KEY)}setStatus('Authenticating…');try{await identifyUser();setStatus(`${username} • loading progress…`);const remote=await getRemote();if(remote){applyRemote(remote)}else{lastSnapshot='';await putRemote(localPayload())}initialized=true;launch();setStatus(`${username} • connected & synced`);clearInterval(syncTimer);syncTimer=setInterval(()=>syncNow(false),5000)}catch(e){setStatus(e.message)}}
+function disconnect(){clearInterval(syncTimer);syncTimer=null;token='';username='';remoteSha=null;initialized=false;sessionStorage.removeItem(TOKEN_KEY);localStorage.removeItem(TOKEN_KEY);$('token').value='';$('remember').checked=false;$('app').src='';$('app').classList.add('hidden');$('setup').classList.remove('hidden');$('sync').classList.add('hidden');$('disconnect').classList.add('hidden');setStatus('Disconnected')}
 $('connect').onclick=connect;$('sync').onclick=()=>syncNow(true);$('disconnect').onclick=disconnect;
-document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')syncNow(false)});
-window.addEventListener('beforeunload',()=>syncNow(false));
+document.addEventListener('visibilitychange',()=>{if(initialized&&document.visibilityState==='hidden')syncNow(false)});
+window.addEventListener('pagehide',()=>{if(initialized)syncNow(false)});
+window.addEventListener('storage',e=>{if(initialized&&(e.key===PROGRESS_KEY||e.key===SESSION_KEY))syncNow(false)});
 if(token)connect();
 </script>
 </body>
