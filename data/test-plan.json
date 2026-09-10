@@ -1,0 +1,9 @@
+{
+  "week1":{"type":"pretest","questions":150,"resumable":true,"showAnswersDuringTest":false,"purpose":"cold baseline"},
+  "week2":{"type":"adaptive","questionsPerSession":20,"cadenceDays":"2-3","resumable":false,"showAnswersDuringTest":true,"purpose":"attack weak relationships"},
+  "week3":{"type":"full-exam","questions":150,"resumable":false,"showAnswersDuringTest":false,"freshBank":true},
+  "week4":{"type":"full-exam","questions":150,"resumable":false,"showAnswersDuringTest":false,"freshBank":true},
+  "week5":{"type":"full-exam","questions":150,"resumable":false,"showAnswersDuringTest":false,"freshBank":true},
+  "week6":{"type":"full-exam","questions":150,"resumable":false,"showAnswersDuringTest":false,"freshBank":true},
+  "readinessRule":{"minimumEachDomain":600,"preferredRange":"650-700","scoreLabel":"Cherub Training Score","officialISACAScore":false}
+}
