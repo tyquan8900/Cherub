@@ -1,53 +1,51 @@
 # Cherub
 
-Cherub is a static, local-first reasoning and study application designed to run anywhere a modern browser can open HTML.
-
-## Why this build
-
-Cherub no longer requires Python or a local web server for normal use. The complete browser app lives in `index.html` and can be opened directly as a file or hosted with GitHub Pages.
-
-## Current capabilities
-
-- Single-file HTML/JavaScript browser app
-- Works on desktop and mobile browsers
-- 150-question cold assessment mode
-- 150-question full exam mode
-- 20-question adaptive practice mode
-- Four weighted study domains
-- Confidence scoring from 1–5
-- Optional learner reasoning capture
-- Answer reveal with rationale
-- Distractor explanations
-- Concept tags
-- Adaptive weak-area selection
-- Per-domain accuracy dashboard
-- Resumable assessment/adaptive sessions
-- Browser-local saved progress using `localStorage`
-
-## Privacy
-
-Personal answers, confidence ratings, reasoning notes, and progress are stored only in the browser's local storage. They are not written back into this repository.
-
-If the repository is made public, the source code and built-in study questions/explanations will be public, but a user's personal progress will not be.
+Cherub is a portable, browser-based study and reasoning application.
 
 ## Run anywhere
 
-### Direct HTML
+Cherub is intentionally distributed as a single self-contained `index.html` file.
 
-Download `index.html` and open it in a modern browser. No installation, Python runtime, administrator access, or server is required.
+- No Python required
+- No installation required
+- No administrator rights required
+- Works from a normal browser
+- Can be hosted with GitHub Pages
+- Can also be opened as a local HTML file where browser policy permits
 
-### GitHub Pages
+## Study features
 
-Once this repository is renamed to `Cherub`, made public, and GitHub Pages is enabled from the `main` branch root, the app can be opened at:
+- Four weighted study domains
+- 150-question pre-assessment mode
+- 150-question full-exam mode
+- Adaptive practice weighted toward weaker areas
+- Hard / Harder scenario questions
+- Confidence tracking
+- Learner reasoning capture
+- Answer rationales and distractor explanations
+- Concept mapping
+- Domain-level performance tracking
+- Resumable browser sessions
+
+## Privacy
+
+Personal study history is stored in the browser with `localStorage`. Cherub does not commit personal answers or scores to this repository.
+
+Browser storage is device/browser specific. Clearing site data may erase locally stored progress.
+
+## Repository layout
 
 ```text
-https://tyquan8900.github.io/Cherub/
+Cherub/
+├── index.html
+├── README.md
+└── .gitignore
 ```
 
-## Repository transition
+## GitHub Pages
 
-The original Python implementation remains in the repository for now as development/reference code. `index.html` is the portable edition intended for iPhone, personal computers, and environments where only static HTML files can be opened.
+After GitHub Pages is enabled for the repository, Cherub can be opened from a phone, tablet, home computer, or other permitted browser using the repository's Pages address.
 
 ## Content integrity
 
-Cherub is an independent study tool. Its scenarios should remain original and should not reproduce proprietary exam questions or commercial question-bank content.
+Cherub uses independently written study scenarios. Proprietary exam questions or commercial question-bank content should not be copied into the repository.
