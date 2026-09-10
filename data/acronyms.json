@@ -1,0 +1,11 @@
+{
+  "BIA":"Business Impact Analysis",
+  "BCP":"Business Continuity Plan",
+  "DRP":"Disaster Recovery Plan",
+  "RTO":"Recovery Time Objective",
+  "RPO":"Recovery Point Objective",
+  "RMF":"Risk Management Framework",
+  "KPI":"Key Performance Indicator",
+  "KRI":"Key Risk Indicator",
+  "IRP":"Incident Response Plan"
+}
