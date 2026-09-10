@@ -1,0 +1,11 @@
+{
+  "version":"2026.09.10.2",
+  "note":"Derived relationship map used by Cherub. Source-reference enrichment continues separately.",
+  "paths":[
+    {"id":"R-D1-01","domain":"D1","path":["Business objectives","Governance / authority","Security strategy","Metrics / reporting"]},
+    {"id":"R-D2-01","domain":"D2","path":["Threat / vulnerability","Risk assessment","Risk treatment","Residual risk","Risk owner","Monitoring / reassessment"]},
+    {"id":"R-D3-01","domain":"D3","path":["Requirements","Program objective","Control design","Implementation","Operation","Testing","Effectiveness","Metrics"]},
+    {"id":"R-D4-01","domain":"D4","path":["BIA","RTO / RPO","Recovery strategy","Recovery plan","Recovery testing","Measured capability","Deficiency","Corrective action","Retest"]},
+    {"id":"R-X-01","domain":"Cross-domain","path":["Control test evidence","Control effectiveness","Residual risk","Risk owner decision","Program improvement"]}
+  ]
+}
