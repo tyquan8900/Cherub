@@ -6,21 +6,15 @@
   }
   const m=await manifest();
   window.CHERUB_MANIFEST=m;
-  const s=document.createElement('script');
-  s.src=`js/runtime.js?v=${encodeURIComponent(m.appVersion||Date.now())}`;
-  s.onload=()=>{
+  const loadScript=(src)=>new Promise((resolve,reject)=>{const s=document.createElement('script');s.src=src;s.onload=resolve;s.onerror=reject;document.head.appendChild(s)});
+  try{
+    await loadScript(`js/runtime.js?v=${encodeURIComponent(m.appVersion||Date.now())}`);
     window.CHERUB_RUNTIME_LOADED=true;
-    const p=document.createElement('script');
-    p.src=`js/repair.js?v=${encodeURIComponent(m.appVersion||Date.now())}`;
-    document.head.appendChild(p);
-  };
-  s.onerror=()=>alert('Cherub could not load the study engine. Refresh once while online.');
-  document.head.appendChild(s);
+    await loadScript(`js/repair.js?v=${encodeURIComponent(m.appVersion||Date.now())}`);
+    await loadScript(`js/health.js?v=${encodeURIComponent(m.appVersion||Date.now())}`);
+  }catch{alert('Cherub could not load the complete study engine. Refresh once while online.');}
   let current=m.appVersion;
-  async function check(){
-    const n=await manifest();
-    if(n.appVersion&&current&&n.appVersion!==current){current=n.appVersion;location.reload();}
-  }
+  async function check(){const n=await manifest();if(n.appVersion&&current&&n.appVersion!==current){current=n.appVersion;location.reload();}}
   setInterval(check,300000);
   document.addEventListener('visibilitychange',()=>{if(!document.hidden)check()});
 })();
