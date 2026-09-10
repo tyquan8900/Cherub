@@ -1,78 +1,56 @@
-# Cherub
+# Cherub Mastery Engine
 
-Cherub is a portable, browser-based study and reasoning application.
+Cherub is a browser-based CISM reasoning and mastery engine using the locked v6 dashboard design.
 
-## Run anywhere
+## Operational flow
 
-Cherub is browser based and requires no Python, local server, or administrator rights.
+1. Week 1 mandatory 150-question cold pre-test.
+   - Current weighting: D1 17%, D2 20%, D3 33%, D4 30%.
+   - Domain labels and answers are hidden during the cold test.
+   - Progress autosaves after every submitted answer.
+   - The pre-test is resumable.
+2. Post-pre-test diagnostic.
+   - Cherub Training Score (200-800 presentation scale; not an official ISACA scaled score).
+   - Domain, topic, relationship, confidence, reasoning, elimination, and misconception analysis.
+3. Week 2 adaptive Hard/Harder practice.
+   - 20-question sessions prioritize weaker domains and relationships.
+   - Immediate explanation after each adaptive question.
+4. Weeks 3-6 full exams.
+   - One separate fresh 150-question bank for each week.
+   - One sitting, no resume.
+   - Answers remain hidden until completion.
+5. Study Map, Progress, Schedule, Notes, Resources, Settings, backup/import/export are active.
 
-- `index.html` is the standalone study engine.
-- `sync.html` is the authenticated launcher that loads and saves progress through GitHub.
-- Each authorized GitHub user has a separate progress file under `users/<github-username>/progress.json`.
+## Update model
 
-## Private GitHub sync
+`index.html` keeps the approved v6 visual design and loads `js/app.js`.
 
-Keep the repository private while using GitHub as the progress backend. Open `sync.html` when using Cherub.
+`js/app.js` is a stable bootstrap loader. It fetches `data/manifest.json` with `no-store`, loads the current runtime using the manifest version, and checks for updates every five minutes and when the tab becomes active again.
 
-Each authorized user uses their own fine-grained GitHub personal access token restricted to the `tyquan8900/Cherub` repository with **Contents: Read and write**. Cherub authenticates the token, detects the GitHub username, and routes that user to a separate progress file.
+Study progress is stored separately in browser storage, so application/content updates do not overwrite the learner's history. JSON export/import provides a backup and migration path.
 
-Example:
+## Files
 
-```text
-users/
-├── tyquan8900/
-│   └── progress.json
-└── second-github-user/
-    └── progress.json
-```
+- `index.html` - locked v6 interface
+- `js/app.js` - version-aware loader
+- `js/runtime.js` - exam, adaptive, scoring, map, progress, notes, schedule, and settings engine
+- `js/repair.js` - hardened browser controls and backup handling
+- `js/health.js` - startup health checks
+- `data/manifest.json` - current app/content version
+- `data/blueprint.json` - domain weighting
+- `data/concepts.json` - concept registry
+- `data/relationships.json` - relationship map
+- `data/index-map.json` - index-driven connection map
+- `data/glossary.json` - normalized terminology
+- `data/acronyms.json` - acronym normalization
+- `data/misconceptions.json` - reasoning error taxonomy
+- `data/source-references.json` - source/scoping manifest
+- `data/test-plan.json` - six-week workflow and readiness rules
 
-The second user's directory and progress file are created automatically the first time that user connects successfully. Users do not share tokens or progress files.
+## Readiness rule
 
-The token is never committed to the repository. If **Remember on this device** is disabled, it is kept only for that browser session. If enabled, it is stored only in that device's browser storage.
+Cherub's internal target is at least 600 in every domain, with a preferred 650-700 range. This is a private training/readiness metric and does not reproduce ISACA's proprietary scoring scale.
 
-### Automatic sync behavior
+## Source policy
 
-- Opening `sync.html` authenticates the GitHub user first.
-- Cherub loads that user's latest remote progress before launching the study engine.
-- If the user's progress file does not exist yet, Cherub creates it automatically.
-- Changes are checked every 5 seconds and saved when progress has changed.
-- Cross-frame browser storage changes also trigger a sync attempt.
-- A manual **Sync now** button remains available.
-- Cherub attempts a final sync when the page is hidden or closed.
-- GitHub update conflicts trigger a fresh read, answer-history merge, and retry.
-- Opening Cherub on another device with the same GitHub user loads the same remote progress.
-
-Do not place a GitHub token, password, API key, or other credential directly in `index.html`, `sync.html`, or any committed file.
-
-## Study features
-
-- Four weighted study domains
-- Cold pre-assessment mode
-- Full-exam mode
-- Adaptive practice weighted toward weaker areas
-- Hard / Harder scenario questions
-- Confidence tracking
-- Learner reasoning capture
-- Answer rationales and distractor explanations
-- Concept mapping
-- Domain-level performance tracking
-- Resumable browser sessions
-
-## Repository layout
-
-```text
-Cherub/
-├── users/
-│   └── tyquan8900/
-│       └── progress.json
-├── index.html
-├── sync.html
-├── README.md
-└── .gitignore
-```
-
-Additional user directories are generated automatically on first authenticated use.
-
-## Content integrity
-
-Cherub uses independently written study scenarios. Proprietary exam questions or commercial question-bank content should not be copied into the repository.
+Licensed manual pages, recordings, and proprietary question text should not be committed to the repository. Cherub stores transformed study structures, mappings, summaries, metadata, and original questions.
