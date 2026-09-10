@@ -1,0 +1,8 @@
+{
+  "appVersion": "2026.09.10.2",
+  "schemaVersion": 6,
+  "questionModel": "relationship-centered",
+  "updated": "2026-09-10T23:55:00Z",
+  "examBlueprint": {"D1":17,"D2":20,"D3":33,"D4":30},
+  "features": ["autosave","resume","adaptive-practice","training-readiness","relationship-mastery","export-import","auto-update-check"]
+}
