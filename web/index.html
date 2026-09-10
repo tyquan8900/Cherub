@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CISM Reasoning Engine</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <main class="shell">
+    <header>
+      <div>
+        <p class="eyebrow">CISM REASONING ENGINE</p>
+        <h1>Train the decision, not the memorization.</h1>
+        <p class="muted">Hard scenario → answer → confidence → reasoning → reveal → adaptive retest.</p>
+      </div>
+      <button id="dashboardBtn" class="ghost">Dashboard</button>
+    </header>
+
+    <section id="home" class="card">
+      <h2>Choose a session</h2>
+      <div class="modes">
+        <button data-mode="preassessment"><strong>150-question cold pre-assessment</strong><span>Resumable · weighted by CISM domains</span></button>
+        <button data-mode="adaptive"><strong>Adaptive checkpoint</strong><span>20 questions · targets weakest domains</span></button>
+        <button data-mode="full_exam"><strong>150-question full exam</strong><span>Continuous sitting · Weeks 3–6</span></button>
+      </div>
+      <div id="resumeWrap" class="resume hidden"><button id="resumeBtn">Resume current session</button></div>
+    </section>
+
+    <section id="quiz" class="card hidden">
+      <div class="quiztop"><span id="progress"></span><span id="domain"></span><span id="difficulty"></span></div>
+      <h2 id="stem"></h2>
+      <div id="options" class="options"></div>
+      <label>Confidence <span id="confidenceValue">3</span>/5<input id="confidence" type="range" min="1" max="5" value="3" /></label>
+      <label>Your reasoning (optional)<textarea id="reasoning" placeholder="Why does this answer best fit the manager's role and business risk?"></textarea></label>
+      <button id="submit" disabled>Lock answer</button>
+    </section>
+
+    <section id="reveal" class="card hidden">
+      <h2 id="resultTitle"></h2>
+      <p id="rationale"></p>
+      <h3>Why the other choices lose</h3>
+      <div id="distractors"></div>
+      <h3>Knowledge map</h3>
+      <div id="concepts" class="chips"></div>
+      <button id="next">Next question</button>
+    </section>
+
+    <section id="dashboard" class="card hidden">
+      <h2>Progress dashboard</h2>
+      <div id="stats"></div>
+      <button id="backHome" class="ghost">Back</button>
+    </section>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>
