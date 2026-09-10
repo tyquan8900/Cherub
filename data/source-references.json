@@ -1,0 +1,14 @@
+{
+  "examBoundary":"Current CISM outline through 2026-11-02",
+  "weights":{"D1":17,"D2":20,"D3":33,"D4":30},
+  "sourceModel":[
+    "Current CISM exam content outline",
+    "16th Edition/current-outline boundary",
+    "17th Edition as expansion/reference mapped backward to current scope",
+    "Index references",
+    "Domain tables and figures",
+    "Glossary and acronym normalization",
+    "Item-development guidance for original Cherub questions"
+  ],
+  "copyright":"Do not store licensed manual pages, recordings, or reproduced proprietary question text in the repository. Store transformed summaries, relationship mappings, metadata, and original Cherub questions only."
+}
