@@ -1,0 +1,11 @@
+{
+  "RTO":"Maximum targeted time to restore a service or process after disruption.",
+  "RPO":"Maximum targeted amount of data loss measured in time.",
+  "BIA":"Analysis of business impacts used to identify critical processes, dependencies and recovery requirements.",
+  "Residual risk":"Risk remaining after controls and treatment are considered.",
+  "Risk appetite":"Amount and type of risk an organization is willing to pursue or retain broadly.",
+  "Risk tolerance":"Specific acceptable variation or threshold around objectives and risk exposure.",
+  "Control effectiveness":"Evidence that a control is operating and producing the intended risk-reduction outcome.",
+  "Accountability":"Being answerable for the outcome or decision.",
+  "Responsibility":"Performing the assigned activity or task."
+}
