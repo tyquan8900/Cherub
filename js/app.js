@@ -8,16 +8,18 @@
   window.CHERUB_MANIFEST=m;
   const s=document.createElement('script');
   s.src=`js/runtime.js?v=${encodeURIComponent(m.appVersion||Date.now())}`;
-  s.onload=()=>{window.CHERUB_RUNTIME_LOADED=true};
+  s.onload=()=>{
+    window.CHERUB_RUNTIME_LOADED=true;
+    const p=document.createElement('script');
+    p.src=`js/repair.js?v=${encodeURIComponent(m.appVersion||Date.now())}`;
+    document.head.appendChild(p);
+  };
   s.onerror=()=>alert('Cherub could not load the study engine. Refresh once while online.');
   document.head.appendChild(s);
   let current=m.appVersion;
   async function check(){
     const n=await manifest();
-    if(n.appVersion&&current&&n.appVersion!==current){
-      current=n.appVersion;
-      location.reload();
-    }
+    if(n.appVersion&&current&&n.appVersion!==current){current=n.appVersion;location.reload();}
   }
   setInterval(check,300000);
   document.addEventListener('visibilitychange',()=>{if(!document.hidden)check()});
