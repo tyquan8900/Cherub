@@ -1,97 +1,53 @@
-# CISM Reasoning Engine
+# Cherub
 
-A private, local-first CISM study application designed to train exam reasoning rather than rote memorization.
+Cherub is a static, local-first reasoning and study application designed to run anywhere a modern browser can open HTML.
+
+## Why this build
+
+Cherub no longer requires Python or a local web server for normal use. The complete browser app lives in `index.html` and can be opened directly as a file or hosted with GitHub Pages.
 
 ## Current capabilities
 
-- Browser-based study interface
-- Original CISM-style scenario questions
-- Hard / Harder difficulty levels
-- Domain weighting:
-  - Domain 1 — Information Security Governance: 17%
-  - Domain 2 — Information Security Risk Management: 20%
-  - Domain 3 — Information Security Program: 33%
-  - Domain 4 — Incident Management: 30%
-- 150-question cold pre-assessment mode
-- 150-question full-exam mode
-- Adaptive 20-question checkpoints weighted toward weak domains
+- Single-file HTML/JavaScript browser app
+- Works on desktop and mobile browsers
+- 150-question cold assessment mode
+- 150-question full exam mode
+- 20-question adaptive practice mode
+- Four weighted study domains
 - Confidence scoring from 1–5
 - Optional learner reasoning capture
 - Answer reveal with rationale
-- Explanation of why distractors lose
-- Concept tags / knowledge-map links
-- Persistent local progress in `data/progress.json`
-- Resume support for resumable sessions
+- Distractor explanations
+- Concept tags
+- Adaptive weak-area selection
 - Per-domain accuracy dashboard
+- Resumable assessment/adaptive sessions
+- Browser-local saved progress using `localStorage`
 
-## Important question-bank status
+## Privacy
 
-The engine currently contains 40 unique original hard/harder scenarios (10 per domain). A 150-question session can run now, but until the bank contains at least 150+ unique questions, the session generator will recycle shuffled questions within the same exam.
+Personal answers, confidence ratings, reasoning notes, and progress are stored only in the browser's local storage. They are not written back into this repository.
 
-The target is a substantially larger original bank so every scheduled 150-question exam can be fresh without reproducing copyrighted ISACA or commercial question-bank content.
+If the repository is made public, the source code and built-in study questions/explanations will be public, but a user's personal progress will not be.
 
-## Training model
+## Run anywhere
 
-1. Hard scenario
-2. Learner answer
-3. Confidence rating
-4. Learner reasoning
-5. Distractor elimination
-6. Answer reveal
-7. Why each option wins or loses
-8. Map to the relevant CISM concept/domain
-9. Adaptive retest
+### Direct HTML
 
-## Six-week schedule
+Download `index.html` and open it in a modern browser. No installation, Python runtime, administrator access, or server is required.
 
-- Week 1: mandatory 150-question cold pre-assessment; resumable
-- Week 2: resumable Hard / Harder / adaptive checkpoints every 2–3 days
-- Weeks 3–6: one fresh 150-question full exam each week in one continuous sitting
-- Short adaptive sessions continue between full exams
+### GitHub Pages
 
-## Run the browser app
-
-Requires Python 3.11+.
-
-```bash
-git clone https://github.com/tyquan8900/Cism.git
-cd Cism
-python app.py
-```
-
-Then open:
+Once this repository is renamed to `Cherub`, made public, and GitHub Pages is enabled from the `main` branch root, the app can be opened at:
 
 ```text
-http://127.0.0.1:8080
+https://tyquan8900.github.io/Cherub/
 ```
 
-No third-party Python packages are required for the current browser application.
+## Repository transition
 
-## Repository layout
+The original Python implementation remains in the repository for now as development/reference code. `index.html` is the portable edition intended for iPhone, personal computers, and environments where only static HTML files can be opened.
 
-```text
-Cism/
-├── app.py
-├── main.py
-├── requirements.txt
-├── cism_engine/
-│   ├── __init__.py
-│   ├── config.py
-│   ├── models.py
-│   ├── question_bank.py
-│   ├── reasoning.py
-│   ├── session.py
-│   └── storage.py
-└── web/
-    ├── index.html
-    ├── app.js
-    └── style.css
-```
+## Content integrity
 
-## Data and privacy
-
-Study progress is stored locally in `data/progress.json`. The `data/` directory should remain uncommitted so personal answers and performance history do not get pushed to GitHub.
-
-## Copyright / exam integrity
-
-This project is an independent study tool. Questions should be original scenarios based on publicly learnable CISM concepts and management reasoning. Do not copy ISACA exam questions or proprietary commercial question-bank content into the repository.
+Cherub is an independent study tool. Its scenarios should remain original and should not reproduce proprietary exam questions or commercial question-bank content.
