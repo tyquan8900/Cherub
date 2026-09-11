@@ -1,7 +1,7 @@
 {
-  "appVersion": "2026.09.11.66",
+  "appVersion": "2026.09.11.67",
   "schemaVersion": 7,
-  "contentVersion": "2026.09.11.66.distinct-visual-aid-flows",
+  "contentVersion": "2026.09.11.67.concept-specific-visual-maps",
   "questionEngine": "relationship-driven-v5",
   "storage": "local-browser-with-json-backup",
   "autoUpdate": true,
