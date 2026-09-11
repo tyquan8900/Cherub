@@ -3,7 +3,7 @@
   const domains = [
     { id: 1, name: 'Governance', weight: 17, planned: 26, t600: 18, t650: 20 },
     { id: 2, name: 'Risk Management', weight: 20, planned: 30, t600: 20, t650: 23 },
-    { id: 3, name: 'Program Development', weight: 33, planned: 49, t600: 33, t650: 37 },
+    { id: 3, name: 'Information Security Program', weight: 33, planned: 49, t600: 33, t650: 37 },
     { id: 4, name: 'Incident Management', weight: 30, planned: 45, t600: 30, t650: 34 },
   ];
   const progress = () => {
