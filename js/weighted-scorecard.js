@@ -20,7 +20,19 @@
   function render() {
     const host = document.getElementById('progressContent');
     if (!host || host.querySelector('.cherub-weighted-scorecard')) return;
-    const attempts = progress().attempts || [];
+    const p = progress();
+    if (!p.completedPretest || p.pretestVersion !== '20q-neutral-v1') return;
+    const attempts = p.attempts || [];
+    const diagnostic = (p.sessions || []).slice().reverse().find(x => x.mode === 'pretest' && x.completed);
+    if (diagnostic && attempts.length === diagnostic.count) {
+      const result = attempts.filter(x => x.sessionId === diagnostic.id);
+      const correct = result.filter(x => x.ok).length;
+      const card = document.createElement('section');
+      card.className = 'card progresscard cherub-weighted-scorecard';
+      card.innerHTML = `<h2 style="margin-top:0">Cold diagnostic score</h2><div style="font-size:32px;font-weight:800">${correct} / ${diagnostic.count}</div><p><b>${Math.round(correct / diagnostic.count * 100)}% correct</b> • ${diagnostic.count - correct} incorrect.</p><p class="tiny">This is a starting snapshot, not a projected 150-question exam score. Complete focused practice or a full exam before relying on readiness targets.</p>`;
+      host.append(card);
+      return;
+    }
     const rows = domains.map(row => {
       const a = attempts.filter(x => +x.d === row.id);
       const correct = a.filter(x => x.ok).length;
