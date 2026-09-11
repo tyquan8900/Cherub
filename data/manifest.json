@@ -1,7 +1,7 @@
 {
-  "appVersion": "2026.09.11.65",
+  "appVersion": "2026.09.11.66",
   "schemaVersion": 7,
-  "contentVersion": "2026.09.11.65.domain-blueprint-concept-mapping",
+  "contentVersion": "2026.09.11.66.distinct-visual-aid-flows",
   "questionEngine": "relationship-driven-v5",
   "storage": "local-browser-with-json-backup",
   "autoUpdate": true,
