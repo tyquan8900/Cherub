@@ -1,7 +1,7 @@
 {
-  "appVersion": "2026.09.11.49",
+  "appVersion": "2026.09.11.50",
   "schemaVersion": 7,
-  "contentVersion": "2026.09.11.49.clear-study-paths",
+  "contentVersion": "2026.09.11.50.relationship-lessons",
   "questionEngine": "relationship-driven-v5",
   "storage": "local-browser-with-json-backup",
   "autoUpdate": true,
