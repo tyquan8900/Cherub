@@ -1,9 +1,9 @@
 {
-  "appVersion": "2026.09.11.33",
+  "appVersion": "2026.09.11.34",
   "schemaVersion": 7,
-  "contentVersion": "2026.09.11.33.cherub-seraphim-badges",
+  "contentVersion": "2026.09.11.34.radiant-cherub-badges",
   "questionEngine": "relationship-driven-v5",
   "storage": "local-browser-with-json-backup",
   "autoUpdate": true,
-  "updated": "2026-09-11T16:20:00Z"
+  "updated": "2026-09-11T16:35:00Z"
 }
