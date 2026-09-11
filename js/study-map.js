@@ -3,7 +3,7 @@
   const domain = {
     1: { name: 'Governance', color: '#2f72e6', steps: ['Business value', 'Authority', 'Strategy', 'Outcome metrics'] },
     2: { name: 'Risk Management', color: '#2eb06a', steps: ['Risk context', 'Risk criteria', 'Owner decision', 'Monitor & reassess'] },
-    3: { name: 'Program Development', color: '#8b42d3', steps: ['Requirements', 'Control design', 'Operate', 'Test effectiveness'] },
+    3: { name: 'Information Security Program', color: '#8b42d3', steps: ['Requirements', 'Control design', 'Operate', 'Test effectiveness'] },
     4: { name: 'Incident Management', color: '#e4770d', steps: ['Readiness', 'Classify', 'Contain', 'Recover & improve'] }
   };
 
