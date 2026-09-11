@@ -21,7 +21,7 @@
     const host = document.getElementById('progressContent');
     if (!host || host.querySelector('.cherub-weighted-scorecard')) return;
     const p = progress();
-    if (!p.completedPretest || p.pretestVersion !== '20q-neutral-v1') return;
+    if (!p.completedPretest || p.pretestVersion !== '20q-cism-format-v2') return;
     const attempts = p.attempts || [];
     const diagnostic = (p.sessions || []).slice().reverse().find(x => x.mode === 'pretest' && x.completed);
     if (diagnostic && attempts.length === diagnostic.count) {
