@@ -1,9 +1,9 @@
 {
-  "appVersion": "2026.09.11.27",
+  "appVersion": "2026.09.11.28",
   "schemaVersion": 7,
-  "contentVersion": "2026.09.11.27.isaca-reasoning-only",
+  "contentVersion": "2026.09.11.28.answer-confidence-only",
   "questionEngine": "relationship-driven-v5",
   "storage": "local-browser-with-json-backup",
   "autoUpdate": true,
-  "updated": "2026-09-11T14:30:00Z"
+  "updated": "2026-09-11T14:45:00Z"
 }
