@@ -1,0 +1,14 @@
+{
+  "title": "Cherub source-reference catalog",
+  "rightsNotice": "ISACA-owned source material is referenced for study alignment only. Cherub does not host, reproduce, or distribute licensed ISACA pages, recordings, tables, figures, or questions.",
+  "sources": [
+    {"id":"SRC-INDEX","label":"ISACA index screen recordings","type":"User-provided reference recording","covers":"Index terms and relationship discovery","rights":"ISACA-owned content; not embedded"},
+    {"id":"SRC-GLOSSARY","label":"ISACA glossary screen recordings","type":"User-provided reference recording","covers":"Glossary and acronym normalization","rights":"ISACA-owned content; not embedded"},
+    {"id":"SRC-SUB","label":"ISACA subknowledge screen recording","type":"User-provided reference recording","covers":"Concept relationships and subtopic context","rights":"ISACA-owned content; not embedded"},
+    {"id":"SRC-D1","label":"Current CISM exam content outline - Domain 1","type":"Scope reference","covers":"Information Security Governance","rights":"ISACA-owned reference"},
+    {"id":"SRC-D2","label":"Current CISM exam content outline - Domain 2","type":"Scope reference","covers":"Information Security Risk Management","rights":"ISACA-owned reference"},
+    {"id":"SRC-D3","label":"Current CISM exam content outline - Domain 3","type":"Scope reference","covers":"Information Security Program","rights":"ISACA-owned reference"},
+    {"id":"SRC-D4","label":"Current CISM exam content outline - Domain 4","type":"Scope reference","covers":"Incident Management","rights":"ISACA-owned reference"}
+  ],
+  "cherubUse": "Original explanations, relationship maps, diagrams, tables, and practice questions are Cherub-created study aids derived from transformed learning relationships."
+}
