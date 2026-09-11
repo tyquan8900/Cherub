@@ -1,7 +1,7 @@
 {
-  "appVersion": "2026.09.11.62",
+  "appVersion": "2026.09.11.63",
   "schemaVersion": 7,
-  "contentVersion": "2026.09.11.62.concept-level-official-visual-links",
+  "contentVersion": "2026.09.11.63.visual-lesson-diagrams",
   "questionEngine": "relationship-driven-v5",
   "storage": "local-browser-with-json-backup",
   "autoUpdate": true,
