@@ -1,7 +1,7 @@
 {
-  "appVersion": "2026.09.11.69",
+  "appVersion": "2026.09.11.70",
   "schemaVersion": 7,
-  "contentVersion": "2026.09.11.69.diagnostic-and-exam-wording",
+  "contentVersion": "2026.09.11.70.true-20-question-diagnostic",
   "questionEngine": "relationship-driven-v5",
   "storage": "local-browser-with-json-backup",
   "autoUpdate": true,
