@@ -35,9 +35,9 @@
   }
   window.addEventListener("cherub:knowledge", (e) => {
     let x = e.detail,
-      h =
-        document.getElementById("indexContent") ||
-        document.getElementById("mapContent");
+      mapHost = document.getElementById("mapContent"),
+      indexHost = document.getElementById("indexContent"),
+      h = mapHost?.closest(".view")?.classList.contains("active") ? mapHost : indexHost?.closest(".view")?.classList.contains("active") ? indexHost : mapHost || indexHost;
     if (!h) return;
     h.querySelector(".cherub-detail")?.remove();
     let t = x.concept || x.path || x.term,
