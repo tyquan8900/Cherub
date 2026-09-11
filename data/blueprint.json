@@ -1,7 +1,7 @@
 {
   "exam":"Current CISM outline before 2026-11-03",
-  "questions":150,
+  "questions":20,
   "weights":{"D1":17,"D2":20,"D3":33,"D4":30},
-  "counts":{"D1":26,"D2":30,"D3":49,"D4":45},
+  "counts":{"D1":5,"D2":5,"D3":5,"D4":5},
   "cherubReadiness":{"minimumPerDomain":600,"preferredRange":"650-700","disclaimer":"Cherub training score is not an official ISACA scaled score."}
 }
