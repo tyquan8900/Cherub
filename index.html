@@ -785,7 +785,7 @@
       }
       .badge {
         min-width: 0;
-        min-height: 108px;
+        min-height: 136px;
         padding: 12px;
         border: 1px solid #d9e2ef;
         border-radius: 12px;
@@ -793,9 +793,15 @@
       }
       .badge.earned { background: #f0f8ee; border-color: #b5d6a8; }
       .badge.locked { opacity: .62; }
-      .badge-icon { height: 28px; line-height: 1; margin-bottom: 7px; color: #5573a7; }
-      .badge.earned .badge-icon { color: #2a8a55; }
-      .badge-icon svg { width: 28px; height: 28px; stroke-width: 3; }
+      .badge-icon { height: 52px; line-height: 1; margin-bottom: 7px; }
+      .badge-icon img { width: 52px; height: 52px; display:block; object-fit:contain; margin:auto; cursor:zoom-in; }
+      .badge-progress { display:block; height:6px; overflow:hidden; border-radius:99px; margin-top:7px; background:rgba(41,61,94,.18); }
+      .badge-progress i { display:block; height:100%; border-radius:inherit; background:linear-gradient(90deg,#4d82df,#35b878); }
+      .badge-progress em { display:block; margin-top:3px; font-size:9px; font-style:normal; color:#526887; }
+      .badge-modal { position:fixed; inset:0; z-index:100; display:grid; place-items:center; padding:22px; background:rgba(5,13,30,.82); }
+      .badge-modal-card { position:relative; width:min(520px,92vw); max-height:90vh; overflow:auto; padding:18px; border-radius:18px; background:linear-gradient(145deg,#102347,#1b376a); color:#fff; box-shadow:0 24px 70px rgba(0,0,0,.55); text-align:center; }
+      .badge-modal-card img { display:block; width:min(390px,80vw); max-height:60vh; object-fit:contain; margin:0 auto 12px; }
+      .badge-modal-card button { position:absolute; right:12px; top:12px; width:34px; height:34px; border:0; border-radius:50%; background:#fff; color:#11254a; font-size:22px; cursor:pointer; }
       .badge:nth-child(1) { background: linear-gradient(135deg,#eef6ff,#d8eaff); border-color:#a9c7ee; }
       .badge:nth-child(1) .badge-icon { color:#2771bf; }
       .badge:nth-child(2) { background: linear-gradient(135deg,#eef9f3,#d8f0e2); border-color:#a8d5b9; }
@@ -953,7 +959,7 @@
   <body>
     <aside class="sidebar">
       <div class="brand">
-        <div class="shield">♢</div>
+        <div class="shield">â¢</div>
         <div>
           <h1>Cherub</h1>
           <small>Mastery Engine</small>
@@ -961,29 +967,29 @@
       </div>
       <div class="menu">
         <button class="active" data-v="dashboard" onclick="show('dashboard')">
-          <span class="ico">⌂</span><span>Dashboard</span></button
+          <span class="ico">â</span><span>Dashboard</span></button
         ><button data-v="practice" onclick="show('practice')">
-          <span class="ico">◉</span><span>Practice</span></button
+          <span class="ico">â</span><span>Practice</span></button
         ><button data-v="map" onclick="show('map')">
-          <span class="ico">⌘</span><span>Study Map</span></button
+          <span class="ico">â</span><span>Study Map</span></button
         ><button data-v="index" onclick="show('index')">
-          <span class="ico">⌕</span><span>Index</span></button
+          <span class="ico">â</span><span>Index</span></button
         ><button data-v="progress" onclick="show('progress')">
-          <span class="ico">▥</span><span>Progress</span>
+          <span class="ico">â¥</span><span>Progress</span>
         </button>
         <div class="sep"></div>
         <button data-v="schedule" onclick="show('schedule')">
-          <span class="ico">▦</span><span>Schedule</span></button
+          <span class="ico">â¦</span><span>Schedule</span></button
         ><button data-v="notes" onclick="show('notes')">
-          <span class="ico">▣</span><span>Notes</span></button
+          <span class="ico">â£</span><span>Notes</span></button
         ><button data-v="resources" onclick="show('resources')">
-          <span class="ico">◫</span><span>Resources</span></button
+          <span class="ico">â«</span><span>Resources</span></button
         ><button data-v="settings" onclick="show('settings')">
-          <span class="ico">⚙</span><span>Settings</span>
+          <span class="ico">â</span><span>Settings</span>
         </button>
       </div>
       <div class="quote">
-        “Discipline<br />turns knowledge<br />into confidence.”<br /><br />—
+        âDiscipline<br />turns knowledge<br />into confidence.â<br /><br />â
         Cherub
       </div>
     </aside>
@@ -994,8 +1000,8 @@
           Value <span>|</span> Lead with Confidence
         </div>
         <div class="user">
-          <div>☀</div>
-          <div class="usericon">◉</div>
+          <div>â</div>
+          <div class="usericon">â</div>
           <div class="usertext"><b>Welcome</b><span>Ready to Begin</span></div>
         </div>
       </div>
@@ -1012,7 +1018,7 @@
                   </p>
                 </div>
                 <div class="pregate">
-                  <div class="lock">🔒</div>
+                  <div class="lock">ð</div>
                   <div>
                     <b>Pre-Test Required</b
                     ><small
@@ -1027,7 +1033,7 @@
                   <div class="ring">
                     <div>
                       <strong id="readinessScore">--</strong
-                      ><small>Readiness Score<br />(200 – 800)</small>
+                      ><small>Readiness Score<br />(200 â 800)</small>
                     </div>
                   </div>
                   <div class="status">
@@ -1067,7 +1073,7 @@
             </div>
             <div class="card mapcard">
               <div class="maphead">
-                <div class="mapicon">⌘</div>
+                <div class="mapicon">â</div>
                 <div>
                   <h3>Study Map</h3>
                   <p>
@@ -1092,13 +1098,13 @@
                 <div class="center">Cherub</div>
               </div>
               <button class="openmap" onclick="show('map')">
-                ▧ &nbsp; Open Study Map
+                â§ &nbsp; Open Study Map
               </button>
             </div>
             <div class="rightstack">
               <div class="card schedule">
                 <div class="schedulehead">
-                  <div class="cal">▦</div>
+                  <div class="cal">â¦</div>
                   <div>
                     <h3>6-Week Study Plan</h3>
                     <p>Your structured path to success.</p>
@@ -1112,7 +1118,7 @@
                   </div>
                   <div class="week">
                     <span class="wk"><span class="dot"></span>Week 2</span
-                    ><span>Adaptive Practice (Every 2–3 Days)</span
+                    ><span>Adaptive Practice (Every 2â3 Days)</span
                     ><span class="pending">Pending</span>
                   </div>
                   <div class="week">
@@ -1138,7 +1144,7 @@
                 </div>
               </div>
               <div class="card quotecard">
-                📖 &nbsp; “Preparation today, confidence tomorrow.”
+                ð &nbsp; âPreparation today, confidence tomorrow.â
               </div>
             </div>
           </div>
@@ -1175,7 +1181,7 @@
                 <div class="card pcard">
                   <h3>20Q Cold Diagnostic</h3>
                   <p>
-                    20 Hard/Harder mixed questions • no topic labels • resumable.
+                    20 Hard/Harder mixed questions â¢ no topic labels â¢ resumable.
                   </p>
                   <button id="startPretest">Start / Resume</button>
                 </div>
@@ -1186,7 +1192,7 @@
                 </div>
                 <div class="card pcard">
                   <h3>Weekly Full Exam</h3>
-                  <p>Weeks 3–6 • fresh 150Q • pause and resume • answers hidden until completion.</p>
+                  <p>Weeks 3â6 â¢ fresh 150Q â¢ pause and resume â¢ answers hidden until completion.</p>
                   <button id="startExam" disabled>Locked</button>
                 </div>
               </div>
@@ -1216,7 +1222,7 @@
             <div class="enginebar">
               <div>
                 <h1>Progress</h1>
-                <p>Training analytics — Cherub internal training score.</p>
+                <p>Training analytics â Cherub internal training score.</p>
               </div>
               <div>
                 <button class="enginebtn secondary" id="exportProgress">
@@ -1239,7 +1245,7 @@
           <div class="card placeholder">
             <h1>Schedule</h1>
             <p>
-              Week 1 baseline. Week 2 adaptive. Weeks 3–6 each include one fresh
+              Week 1 baseline. Week 2 adaptive. Weeks 3â6 each include one fresh
               150-question full exam with pause and resume.
             </p>
           </div>
@@ -1279,5 +1285,5 @@
     <script src="js/release-checks.js?v=2026.09.11.9"></script>
   </body>
 </html>
-Footer © 2026 GitHub, Inc. Footer navigation Terms Privacy Security Status
+Footer Â© 2026 GitHub,Â Inc. Footer navigation Terms Privacy Security Status
 Community Docs Contact Manage cookies Do not share my personal information
