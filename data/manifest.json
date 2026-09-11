@@ -1,7 +1,7 @@
 {
-  "appVersion": "2026.09.11.60",
+  "appVersion": "2026.09.11.61",
   "schemaVersion": 7,
-  "contentVersion": "2026.09.11.60.individual-visual-reference-routing",
+  "contentVersion": "2026.09.11.61.attributed-official-visual-references",
   "questionEngine": "relationship-driven-v5",
   "storage": "local-browser-with-json-backup",
   "autoUpdate": true,
