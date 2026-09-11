@@ -1,9 +1,9 @@
 {
-  "appVersion": "2026.09.11.34",
+  "appVersion": "2026.09.11.35",
   "schemaVersion": 7,
-  "contentVersion": "2026.09.11.34.radiant-cherub-badges",
+  "contentVersion": "2026.09.11.35.biblical-imagery-badge-path",
   "questionEngine": "relationship-driven-v5",
   "storage": "local-browser-with-json-backup",
   "autoUpdate": true,
-  "updated": "2026-09-11T16:35:00Z"
+  "updated": "2026-09-11T16:50:00Z"
 }
