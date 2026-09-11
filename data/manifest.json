@@ -1,9 +1,9 @@
 {
-  "appVersion": "2026.09.11.38",
+  "appVersion": "2026.09.11.39",
   "schemaVersion": 7,
-  "contentVersion": "2026.09.11.38.badge-zoom-and-progress",
+  "contentVersion": "2026.09.11.39.smooth-badge-progress",
   "questionEngine": "relationship-driven-v5",
   "storage": "local-browser-with-json-backup",
   "autoUpdate": true,
-  "updated": "2026-09-11T18:00:00Z"
+  "updated": "2026-09-11T18:30:00Z"
 }
