@@ -2,9 +2,9 @@
 (()=>{
 const M=window.CHERUB_MANIFEST||{appVersion:'2026.09.10.4'};
 const PK='cherub.progress.v7',SK='cherub.session.v7',NK='cherub.notes.v1';
-const D={1:'Information Security Governance',2:'Information Risk Management',3:'Information Security Program Development',4:'Information Security Incident Management'};
+const D={1:'Information Security Governance',2:'Information Security Risk Management',3:'Information Security Program',4:'Incident Management'};
 const W={1:.17,2:.20,3:.33,4:.30},N={1:26,2:30,3:49,4:45};
-const TOP={1:['Business alignment','Governance / authority','Roles & accountability','Strategy'],2:['Risk assessment','Risk response','Residual risk / ownership','Monitoring / reporting'],3:['Program development','Control design / selection','Implementation','Testing / effectiveness'],4:['Readiness / planning','Investigation / classification','Containment decisions','Recovery']};
+const TOP={1:['Business alignment','Governance / authority','Roles & accountability','Strategy'],2:['Risk assessment','Risk response','Residual risk / ownership','Monitoring / reporting'],3:['Program alignment','Control design / selection','Implementation','Testing / effectiveness'],4:['Readiness / planning','Investigation / classification','Containment decisions','Recovery']};
 const REL={1:['Business objectives → security strategy','Governance → decision rights','Risk appetite → tolerance','Business owner → risk acceptance','Metrics → executive decisions'],2:['Threat/vulnerability → risk assessment','Controls → residual risk','Residual risk → risk owner','Treatment → monitoring','Material change → reassessment'],3:['Requirements → program objectives','Program → control design','Implementation → operation','Operation → testing','Testing → effectiveness','Effectiveness → metrics'],4:['BIA → RTO/RPO','RTO/RPO → recovery strategy','Plan → recovery test','Incident → classify/triage','Contain → eradicate → recover','Post-incident review → corrective action']};
 const RULES={
 1:[
