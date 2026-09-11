@@ -1,7 +1,7 @@
 {
-  "appVersion": "2026.09.11.70",
+  "appVersion": "2026.09.11.71",
   "schemaVersion": 7,
-  "contentVersion": "2026.09.11.70.true-20-question-diagnostic",
+  "contentVersion": "2026.09.11.71.remove-topic-cues-from-stems",
   "questionEngine": "relationship-driven-v5",
   "storage": "local-browser-with-json-backup",
   "autoUpdate": true,
