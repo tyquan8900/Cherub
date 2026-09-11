@@ -1,9 +1,9 @@
 {
-  "appVersion": "2026.09.11.9",
+  "appVersion": "2026.09.11.10",
   "schemaVersion": 7,
-  "contentVersion": "2026.09.11.connected-learning-loop-layer",
-  "questionEngine": "relationship-driven-v3",
+  "contentVersion": "2026.09.11.difficulty-and-feedback-depth-layer",
+  "questionEngine": "relationship-driven-v4",
   "storage": "local-browser-with-json-backup",
   "autoUpdate": true,
-  "updated": "2026-09-11T08:00:00Z"
+  "updated": "2026-09-11T08:20:00Z"
 }
