@@ -1,6 +1,6 @@
 'use strict';
 (() => {
-  const names = { D1: 'Governance', D2: 'Risk Management', D3: 'Program Development', D4: 'Incident Management' };
+  const names = { D1: 'Governance', D2: 'Risk Management', D3: 'Information Security Program', D4: 'Incident Management' };
   let data;
   async function load() {
     if (data) return data;
