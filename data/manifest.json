@@ -1,9 +1,9 @@
 {
-  "appVersion": "2026.09.11.42",
+  "appVersion": "2026.09.11.43",
   "schemaVersion": 7,
-  "contentVersion": "2026.09.11.42.evidence-based-badge-ranks",
+  "contentVersion": "2026.09.11.43.six-week-readiness-progression",
   "questionEngine": "relationship-driven-v5",
   "storage": "local-browser-with-json-backup",
   "autoUpdate": true,
-  "updated": "2026-09-11T19:20:00Z"
+  "updated": "2026-09-11T19:40:00Z"
 }
