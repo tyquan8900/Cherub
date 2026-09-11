@@ -39,7 +39,7 @@
       card.remove();
       window.dispatchEvent(
         new CustomEvent("cherub:focus", {
-          detail: { domain: x.domain || "D1", concept: t },
+          detail: { domain: x.domain || "D1", concept: t, path: x.path || c?.path },
         }),
       );
       setTimeout(
