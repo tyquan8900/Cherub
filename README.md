@@ -17,7 +17,7 @@ Cherub is a browser-based CISM reasoning and mastery engine using the locked v6 
    - Immediate explanation after each adaptive question.
 4. Weeks 3-6 full exams.
    - One separate fresh 150-question bank for each week.
-   - One sitting, no resume.
+   - Pause and resume are available; full-exam answers remain hidden until completion.
    - Answers remain hidden until completion.
 5. Study Map, Progress, Schedule, Notes, Resources, Settings, backup/import/export are active.
 
