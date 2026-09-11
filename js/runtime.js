@@ -145,15 +145,18 @@ function finish(s){let p=load(),a=attemptsForSession(s.id,p),correct=a.filter(x=
 function paceFactor(seconds){if(seconds===undefined||seconds===null)return null;if(seconds<=96)return 1;if(seconds<=120)return .96;if(seconds<=150)return .90;if(seconds<=180)return .82;return .70}
 function domainReadiness(d,p){let all=p.attempts.filter(x=>x.d===d),fresh=all.filter(x=>x.fresh!==false),distinct=[...new Set(fresh.map(x=>x.id))],n=distinct.length;if(!n)return{n:0,score:null,status:'Not started',accuracy:null,pace:null,confidence:null,coverage:0};let weighted=fresh.reduce((sum,x)=>sum+(x.difficulty==='Harder'?1.2:1),0),correct=fresh.reduce((sum,x)=>sum+(x.ok?(x.difficulty==='Harder'?1.2:1):0),0),accuracy=weighted?correct/weighted:0,known=fresh.filter(x=>x.seconds!==undefined),pace=known.length?known.reduce((sum,x)=>sum+paceFactor(x.seconds),0)/known.length:.85,highWrong=fresh.filter(x=>!x.ok&&x.confidence>=75).length,confidence=Math.max(.70,1-highWrong/Math.max(1,n)),coverage=Math.min(1,n/15),earned=(accuracy*.70+pace*.15+confidence*.15)*coverage,score=Math.round(200+earned*600),status=n<3?'In progress':n<10?'Building evidence':n<15?'Strengthening':'Sufficient evidence';return{n,score,status,accuracy,pace,confidence,coverage,seconds:known.length?Math.round(known.reduce((sum,x)=>sum+x.seconds,0)/known.length):null}}
 function stats(){let p=load(),all=p.attempts,by={};for(let d=1;d<=4;d++){let r=domainReadiness(d,p),a=all.filter(x=>x.d===d);by[d]={...r,attempts:a.length,acc:a.length?a.filter(x=>x.ok).length/a.length:null}}let acc=all.length?all.filter(x=>x.ok).length/all.length:null,weighted=0,weightUsed=0;for(let d=1;d<=4;d++)if(by[d].score!==null){weighted+=((by[d].score-200)/600)*W[d];weightUsed+=W[d]}let score=weightUsed===1?Math.round(200+(weighted/weightUsed)*600):null,hi=all.filter(x=>x.confidence>=75);return{p,all,by,acc,score,cal:hi.length?hi.filter(x=>x.ok).length/hi.length:null,evidenceReady:Object.values(by).every(x=>x.n>=3)}}
+function badgeMark(id){return `<svg aria-hidden="true"><use href="assets/cherub-badges.svg#${id}"></use></svg>`}
 function earnedBadges(s){let timed=s.all.filter(x=>x.fresh!==false&&x.seconds!==undefined),pace=timed.length?timed.reduce((sum,x)=>sum+paceFactor(x.seconds),0)/timed.length:null,full=s.p.sessions.filter(x=>/^week/.test(x.mode)&&x.completed),recovered=Object.values(s.all.reduce((m,x)=>{(m[x.relation]||(m[x.relation]=[])).push(x);return m},{})).some(a=>a.some(x=>!x.ok)&&a.slice(-3).some(x=>x.ok)),all600=[1,2,3,4].every(d=>s.by[d].score!==null&&s.by[d].score>=600),all650=[1,2,3,4].every(d=>s.by[d].score!==null&&s.by[d].score>=650);return[
-['🧭','Cold start','Complete the protected diagnostic.',s.p.completedPretest],
-['📚','Evidence builder','Answer 20 fresh questions across the map.',s.all.filter(x=>x.fresh!==false).length>=20],
-['🎯','Calibrated judgment','Maintain 80% high-confidence accuracy across 10 decisions.',s.cal!==null&&s.all.filter(x=>x.confidence>=75).length>=10&&s.cal>=.80],
-['⏱️','On pace','Maintain exam pace across 15 timed fresh questions.',timed.length>=15&&pace!==null&&pace>=.95],
-['🔁','Recovery loop','Turn a missed relationship into a later correct decision.',recovered],
-['🧪','Full simulation','Complete one fresh weekly full exam.',full.length>=1],
-['🏁','Target range','Earn 600+ in all four domains.',all600],
-['⭐','Strong readiness','Earn 650+ in every domain and complete a full simulation.',all650&&full.length>=1]
+[badgeMark('cold-start'),'Cold start','Complete the protected diagnostic.',s.p.completedPretest],
+[badgeMark('evidence-builder'),'Evidence builder','Answer 20 fresh questions across the map.',s.all.filter(x=>x.fresh!==false).length>=20],
+[badgeMark('study-rhythm'),'Study rhythm','Complete three separate study sessions.',s.p.sessions.filter(x=>x.completed).length>=3],
+[badgeMark('calibrated-judgment'),'Calibrated judgment','Maintain 80% high-confidence accuracy across 10 decisions.',s.cal!==null&&s.all.filter(x=>x.confidence>=75).length>=10&&s.cal>=.80],
+[badgeMark('on-pace'),'On pace','Maintain exam pace across 15 timed fresh questions.',timed.length>=15&&pace!==null&&pace>=.95],
+[badgeMark('recovery-loop'),'Recovery loop','Turn a missed relationship into a later correct decision.',recovered],
+[badgeMark('balanced-coverage'),'Balanced coverage','Build at least 10 fresh questions in every domain.',[1,2,3,4].every(d=>s.by[d].n>=10)],
+[badgeMark('full-simulation'),'Full simulation','Complete one fresh weekly full exam.',full.length>=1],
+[badgeMark('target-range'),'Target range','Earn 600+ in all four domains.',all600],
+[badgeMark('seraphim'),'Seraphim readiness','Earn 650+ in every domain and complete a full simulation.',all650&&full.length>=1]
 ]}
 function nextStudyAction(s){let domain=[1,2,3,4].sort((a,b)=>{let x=s.by[a],y=s.by[b];return (x.score??0)-(y.score??0)||x.n-y.n})[0],miss=s.all.filter(x=>x.d===domain&&!x.ok).slice(-1)[0],path=miss?.relation||REL[domain][0],concept=miss?.concept||TOP[domain][0];return{domain,concept,path}}
 function topicScore(d,t,p){let a=p.attempts.filter(x=>x.d===d&&x.topic===t);return a.length?a.filter(x=>x.ok).length/a.length:null}
