@@ -6,6 +6,28 @@
     D3: ['Control effectiveness chain', 'Requirement → Control design → Operation → Evidence → Effectiveness → Metric', [['Design requirement','What the control must achieve'],['Test results','Evidence, deficiency, and corrective action']]],
     D4: ['Recovery objectives and incident flow', 'BIA → RTO / RPO → Recovery strategy → Plan and test → Correct and retest', [['Critical process / dependency','Recovery priority'],['Maximum downtime','RTO restoration-time target'],['Acceptable data loss','RPO recovery-point target'],['Test deficiency','Corrective action and retest']]]
   };
+  const variants = {
+    D1: {
+      'Business-objective alignment table':'Business objectives → Security strategy → Governance framework → Executive reporting',
+      'Decision-rights and accountability diagram':'Decision rights → Accountable owner → Responsible role → Escalation decision',
+      'Leadership metrics trend chart':'Security metric → Trend / exception → Leadership review → Business decision'
+    },
+    D2: {
+      'Risk register and treatment table':'Risk scenario → Risk analysis → Treatment decision → Risk register → Owner',
+      'Inherent-to-residual risk comparison chart':'Inherent risk → Control selection → Control effectiveness → Residual risk → Acceptance',
+      'Risk trend and reassessment dashboard':'Risk criteria → Monitoring signal → Reassessment → Escalation → Owner decision'
+    },
+    D3: {
+      'Control design-to-evidence table':'Business requirement → Control design → Control operation → Evidence → Test result',
+      'Control effectiveness test-results chart':'Test scope → Evidence review → Effectiveness result → Deficiency → Corrective action',
+      'Program metrics trend dashboard':'Program objective → Metric → Leadership trend → Improvement decision → Program update'
+    },
+    D4: {
+      'BIA impact and dependency table':'Business process → Impact / dependency → Priority → RTO / RPO → Recovery strategy',
+      'RTO/RPO recovery-objective matrix':'Disruption → Acceptable data loss (RPO) → Maximum downtime (RTO) → Recovery target',
+      'Recovery-test results and deficiency trend chart':'Recovery test → Measured result → Gap / deficiency → Corrective action → Retest'
+    }
+  };
   const official = {
     D1: [{ label:'COBIT 2019 structural governance framework', url:'https://www.linkedin.com/pulse/introduction-cobit-2019-framework-effective-governance-n4oce' }],
     D2: [{ label:'NIST SP 800-30 Rev. 1 threat and risk methodology', url:'https://csrc.nist.gov/pubs/sp/800/30/r1/final' }],
@@ -17,10 +39,11 @@
     card.querySelector('.cherub-visual-aid')?.remove();
     const box = document.createElement('section'); box.className='card cherub-visual-aid'; box.style.marginTop='14px'; box.style.padding='15px';
     const src=official[domain]||official.D4;
-    const steps=v[1].split('→').map(x=>x.trim());
+    const flow=(variants[domain]||{})[selected]||v[1];
+    const steps=flow.split('→').map(x=>x.trim());
     const width=Math.max(720, steps.length*175), height=250;
     const boxes=steps.map((step,i)=>{const x=22+i*(width-170)/(Math.max(steps.length-1,1));const fill=i===0?'#dcecff':i===steps.length-1?'#dff6e5':'#eee7ff';const text=step.length>19?step.replace(' ','\n'):step;return `<g><rect x="${x}" y="80" width="148" height="82" rx="16" fill="${fill}" stroke="#3a74cf" stroke-width="2"/><text x="${x+74}" y="112" text-anchor="middle" font-family="system-ui, sans-serif" font-size="15" font-weight="700" fill="#18375e">${text.split('\n').map((line,j)=>`<tspan x="${x+74}" dy="${j?'19':'0'}">${line}</tspan>`).join('')}</text>${i<steps.length-1?`<path d="M ${x+148} 121 L ${x+170} 121" stroke="#2876d2" stroke-width="4" marker-end="url(#arrow)"/>`:''}</g>`}).join('');
-    const svg=`<svg viewBox="0 0 ${width} ${height}" role="img" aria-label="${v[0]} diagram" style="display:block;width:100%;min-width:700px;background:linear-gradient(135deg,#f9fcff,#f1edff);border:1px solid #d8e4f2;border-radius:14px"><defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2876d2"/></marker></defs><text x="22" y="38" font-family="system-ui, sans-serif" font-size="19" font-weight="800" fill="#142d52">${v[0]}</text><text x="22" y="61" font-family="system-ui, sans-serif" font-size="13" fill="#49617f">Start at blue, follow the decision sequence, and finish at green.</text>${boxes}</svg>`;
+    const svg=`<svg viewBox="0 0 ${width} ${height}" role="img" aria-label="${selected||v[0]} diagram" style="display:block;width:100%;min-width:700px;background:linear-gradient(135deg,#f9fcff,#f1edff);border:1px solid #d8e4f2;border-radius:14px"><defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2876d2"/></marker></defs><text x="22" y="38" font-family="system-ui, sans-serif" font-size="19" font-weight="800" fill="#142d52">${selected||v[0]}</text><text x="22" y="61" font-family="system-ui, sans-serif" font-size="13" fill="#49617f">Start at blue, follow the decision sequence, and finish at green.</text>${boxes}</svg>`;
     const sourceImage = domain === 'D2' ? `<figure style="margin:16px 0"><img src="assets/nist-sp800-30-risk-methodology.png" alt="NIST SP 800-30 risk assessment methodology flowchart" style="display:block;width:min(100%,660px);margin:auto;border:1px solid #d8e4f2;border-radius:12px;background:white"><figcaption class="tiny" style="margin-top:7px">External visual: <a href="https://commons.wikimedia.org/wiki/File:NIST_SP_800-30_Figure_3-1.png" target="_blank" rel="noopener noreferrer">NIST SP 800-30 Figure 3-1, via Wikimedia Commons ↗</a>. Marked there as U.S. Government/public-domain material; source page and attribution are linked.</figcaption></figure>` : '';
     box.innerHTML = `<h2>${v[0]}</h2>${selected?`<p class="tiny"><b>Opened visual:</b> ${selected}</p>`:''}<p class="tiny">This is an original Cherub relationship diagram — not a copied exam figure.</p><div style="overflow-x:auto;margin:12px 0">${svg}</div>${sourceImage}<p class="tiny"><b>Domain visual blueprints:</b> ${src.map(s=>`<a href="${s.url}" target="_blank" rel="noopener noreferrer">${s.label} ↗</a>`).join(' &nbsp;•&nbsp; ')}</p><table style="width:100%;border-collapse:collapse;font-size:13px"><thead><tr><th style="padding:8px;border:1px solid #dce6f3;background:#edf5ff;text-align:left">Visual reference</th><th style="padding:8px;border:1px solid #dce6f3;background:#edf5ff;text-align:left">What it shows</th></tr></thead><tbody>${v[2].map(r=>`<tr${selected&&r[0].toLowerCase().includes(selected.split(' ')[0].toLowerCase())?' style="background:#fff8df"':''}><td style="padding:8px;border:1px solid #dce6f3">${r[0]}</td><td style="padding:8px;border:1px solid #dce6f3">${r[1]}</td></tr>`).join('')}</tbody></table>`;
     card.append(box); box.scrollIntoView({behavior:'smooth',block:'nearest'});
