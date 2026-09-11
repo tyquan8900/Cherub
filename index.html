@@ -1,13 +1,1188 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Cherub</title><style>:root{  --bg:#f5f7fb; --panel:#fff; --ink:#0f1f3a; --muted:#587099; --line:#d8e1ed;  --sidebar:#172a45; --sidebar2:#10223b; --active:#285fa9; --blue:#2f72e6;  --green:#2eb06a; --purple:#8b42d3; --orange:#e4770d;}*{box-sizing:border-box}html,body{margin:0;width:100%;min-height:100%;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}body{display:grid;grid-template-columns:198px minmax(0,1fr)}.sidebar{position:sticky;top:0;height:100vh;background:linear-gradient(180deg,var(--sidebar),var(--sidebar2));padding:15px 10px;color:#fff}.brand{height:58px;display:flex;align-items:flex-start;gap:9px;padding:0 10px}.shield{font-size:34px;line-height:1}.brand h1{font-size:20px;line-height:1;margin:1px 0 0;font-weight:800;letter-spacing:.01em}.brand small{display:block;font-size:12px;color:#c9d3e1;margin-top:5px;font-weight:400}.menu{margin-top:10px}.menu button{height:46px;width:100%;border:0;border-radius:8px;background:transparent;color:#fff;display:flex;align-items:center;gap:14px;padding:0 14px;margin:3px 0;font-size:14px;text-align:left;cursor:pointer}.menu button.active{background:var(--active)}.ico{width:22px;text-align:center;font-size:18px}.sep{height:1px;background:rgba(255,255,255,.18);margin:11px 10px}.quote{position:absolute;left:25px;bottom:30px;width:135px;font-family:Georgia,serif;font-style:italic;font-size:13px;line-height:1.5;color:#f0f4fb}.main{min-width:0}.topbar{height:66px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 24px}.motto{font-family:Georgia,serif;font-size:14px;color:#4b5669}.motto span{padding:0 10px;color:#b0bac9}.user{display:flex;align-items:center;gap:11px;font-size:12px}.usericon{width:36px;height:36px;border-radius:50%;background:#edf1f7;display:flex;align-items:center;justify-content:center;font-size:17px}.usertext b{display:block;line-height:1.2}.usertext span{color:#52698b}.content{padding:13px 14px 10px 20px}.view{display:none}.view.active{display:block}.topgrid{display:grid;grid-template-columns:minmax(560px,1fr) 300px 289px;gap:12px;align-items:start}.lefttop{min-width:0}.titlegate{height:80px;display:grid;grid-template-columns:minmax(0,1fr) 182px;gap:12px;align-items:start}.titlecopy{padding:8px 0 0 11px}.titlecopy h1{font-size:31px;line-height:1;margin:0 0 8px;letter-spacing:-.025em}.titlecopy p{font-size:13px;color:#4f668d;margin:0;white-space:nowrap}.pregate{height:70px;background:#fff;border:1px solid var(--line);border-radius:13px;box-shadow:0 3px 12px rgba(27,46,77,.05);display:flex;gap:10px;align-items:flex-start;padding:13px}.lock{font-size:24px;color:#d77700;line-height:1}.pregate b{display:block;font-size:13px;margin-bottom:3px}.pregate small{font-size:10px;color:#60708b;line-height:1.25;display:block}.card{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 3px 12px rgba(27,46,77,.045)}.readiness{height:284px;padding:15px 18px}.readiness h2{font-size:18px;margin:0 0 9px}.readybody{display:grid;grid-template-columns:185px minmax(0,1fr);gap:20px;align-items:center}.ring{width:157px;height:157px;border:14px solid #e2e8f1;border-radius:50%;display:flex;align-items:center;justify-content:center;text-align:center;margin-left:5px}.ring strong{display:block;font-size:33px;letter-spacing:.06em;margin-bottom:7px}.ring small{font-size:12px;color:#475f86;line-height:1.3}.status{padding-top:4px}.status h3{font-size:21px;margin:0 0 7px}.status p{font-size:13px;color:#6b7c95;margin:0;line-height:1.45}.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:46px}.metric{height:82px;border:1px solid #e0e6ef;border-radius:9px;background:#fafbfe;display:flex;align-items:center;justify-content:center;text-align:center}.metric b{font-size:17px;display:block;margin-bottom:4px}.metric span{font-size:11px;line-height:1.15;color:#31466b}.mapcard{height:364px;padding:14px 13px 12px}.maphead{display:flex;gap:10px;align-items:flex-start}.mapicon{font-size:25px;color:#1664e8}.maphead h3{font-size:17px;margin:1px 0 4px}.maphead p{font-size:10.5px;color:#5e7090;margin:0}.orbit{height:251px;position:relative;margin-top:3px}.orbit:before{content:"";position:absolute;left:55px;right:55px;top:43px;bottom:43px;border:4px solid #e0e6ef;border-radius:50%}.center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:70px;height:70px;border-radius:50%;border:2px solid #cbd4e2;background:#fff;display:flex;align-items:center;justify-content:center;font-weight:800}.node{position:absolute;width:88px;height:88px;border:2px solid;border-radius:50%;display:flex;align-items:center;justify-content:center;text-align:center;font-size:10px;line-height:1.15}.node b{font-size:15px}.n1{left:50%;top:1px;transform:translateX(-50%);border-color:#4f8cff;background:#edf4ff}.n2{right:8px;top:80px;border-color:#30af69;background:#ecfaf2}.n3{left:50%;bottom:1px;transform:translateX(-50%);border-color:#8a53dc;background:#f5efff}.n4{left:8px;top:80px;border-color:#e77a12;background:#fff4e8}.openmap{height:36px;width:100%;border:1px solid #c9d8f4;border-radius:7px;background:#eef4ff;color:#105bd6;font-weight:700;font-size:12px;cursor:pointer}.rightstack{display:flex;flex-direction:column;gap:10px}.schedule{height:297px;padding:14px 13px}.schedulehead{display:flex;gap:10px;align-items:flex-start}.cal{font-size:24px;color:#1769ea}.schedule h3{font-size:17px;margin:0 0 4px}.schedule p{font-size:10.5px;color:#5e7090;margin:0}.weeklist{margin-top:10px}.week{height:36px;display:grid;grid-template-columns:64px minmax(0,1fr) 51px;gap:5px;align-items:center;border-bottom:1px solid #edf0f4;font-size:9.5px}.week:last-child{border-bottom:0}.wk{color:#1f4e96;font-size:11px;white-space:nowrap}.dot{display:inline-block;width:11px;height:11px;background:#2d73e6;border-radius:50%;margin-right:6px;vertical-align:-1px}.pending{justify-self:end;background:#eef1f5;color:#62718a;border-radius:999px;padding:4px 6px;font-size:9px}.quotecard{height:58px;background:linear-gradient(135deg,#f4f7ff,#e9efff);display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-style:italic;font-size:12px}.domains{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}.domain{height:244px;padding:11px 13px}.domainhead{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:center;margin-bottom:7px}.badge{font-size:19px;font-weight:800;color:#fff;border-radius:7px;padding:5px 11px;line-height:1}.d1{background:var(--blue)}.d2{background:var(--green)}.d3{background:var(--purple)}.d4{background:var(--orange)}.domainhead h3{font-size:13px;line-height:1.2;margin:0}.weight{font-size:11px;font-weight:700;background:#eff2f6;color:#52617a;padding:4px 8px;border-radius:999px}.topic{height:32px;padding-top:5px;border-bottom:1px solid #edf0f4}.topicline{display:flex;justify-content:space-between;align-items:center;font-size:11.5px;margin-bottom:3px}.track{height:8px;background:#e4e9f0;border-radius:999px}.train{height:44px;width:100%;margin-top:8px;border:0;border-radius:8px;background:#edf3ff;color:#2459b9;text-align:left;padding:7px 11px;font-weight:700;font-size:12px}.train small{display:block;margin:2px 0 0 26px;font-size:9.5px;font-weight:400;color:#617392}.footer{display:flex;justify-content:space-between;font-size:9px;color:#64748b;padding:10px 1px 0}.placeholder{padding:28px}.placeholder h1{margin-top:0}.practicegrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.pcard{padding:16px}.pcard button{border:0;border-radius:8px;background:#dfe6f2;color:#728198;padding:9px 11px;font-weight:700}.enginewrap{max-width:1050px;margin:0 auto}.enginebar{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:12px}.epill{display:inline-block;padding:5px 9px;border-radius:999px;background:#eef4ff;color:#315b9d;font-size:11px;margin-right:5px}.qprogress{height:9px;background:#e4e9f0;border-radius:999px;overflow:hidden;margin:12px 0 18px}.qprogress>div{height:100%;background:#2f72e6}.questioncard{padding:22px}.questioncard h2{font-size:21px;line-height:1.4}.qoption{display:block;width:100%;border:1px solid #d4deeb;border-radius:10px;background:white;padding:13px 14px;margin:9px 0;text-align:left;color:#142540;cursor:pointer}.qoption:hover{background:#f7faff}.qoption.selected{border-color:#2f72e6;box-shadow:0 0 0 2px rgba(47,114,230,.13)}.qcontrols{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}.qcontrols label{font-size:12px;font-weight:700}.qcontrols textarea,.qcontrols select{width:100%;margin-top:6px;border:1px solid #d4deeb;border-radius:9px;padding:10px;background:#fff;color:#142540}.qcontrols textarea{min-height:74px}.confidence{display:flex;gap:7px;margin-top:7px}.confidence button,.enginebtn{border:0;border-radius:8px;padding:9px 12px;font-weight:700;cursor:pointer}.confidence button{background:#edf2f8;color:#294266}.confidence button.active{background:#2f72e6;color:#fff}.enginebtn{background:#2f72e6;color:#fff}.enginebtn.secondary{background:#edf2f8;color:#294266}.feedbackbox{margin-top:18px;padding:16px;border-radius:10px;background:#f6f9fe;border:1px solid #d8e5f8;line-height:1.5}.resumeBanner{display:none;margin:0 0 12px;padding:12px 14px;border-radius:9px;background:#fff7e7;border:1px solid #f4d391}.resumeBanner.show{display:flex;align-items:center;justify-content:space-between;gap:10px}.progressgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.progresscard{padding:16px}.tiny{font-size:11px;color:#657896}.mapchain{padding:16px;line-height:1.8;font-size:14px}.mapchain span{display:inline-block;background:#eef4ff;border:1px solid #cad9f0;border-radius:8px;padding:5px 8px;margin:3px}.notice{padding:12px 14px;background:#eef7ff;border:1px solid #d2e7fb;border-radius:9px;margin-bottom:12px;font-size:12px}.hidden{display:none!important}@media(max-width:1260px){body{grid-template-columns:78px 1fr}.brand h1,.brand small,.menu button span,.quote{display:none}.brand{justify-content:center}.menu button{justify-content:center}.topgrid{grid-template-columns:1fr 300px}.rightstack{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr}.schedule,.quotecard{height:auto}}@media(max-width:900px){body{display:block}.sidebar{position:relative;height:auto;display:flex;overflow:auto}.brand,.quote,.sep{display:none}.menu{display:flex;margin:0}.menu button{width:auto}.menu button span{display:inline}.topgrid,.domains,.practicegrid{grid-template-columns:1fr}.titlegate{grid-template-columns:1fr;height:auto}.pregate{margin:8px 0}.rightstack{display:block}.schedule{margin-bottom:10px}.readiness{height:auto}.readybody,.metrics,.qcontrols,.progressgrid{grid-template-columns:1fr}.mapcard,.schedule,.domain{height:auto}.titlecopy p{white-space:normal}.enginebar{align-items:flex-start;flex-direction:column}}</style></head><body><aside class="sidebar"><div class="brand"><div class="shield">♢</div><div><h1>Cherub</h1><small>Mastery Engine</small></div></div><div class="menu"><button class="active" data-v="dashboard" onclick="show('dashboard')"><span class="ico">⌂</span><span>Dashboard</span></button><button data-v="practice" onclick="show('practice')"><span class="ico">◉</span><span>Practice</span></button><button data-v="map" onclick="show('map')"><span class="ico">⌘</span><span>Study Map</span></button><button data-v="progress" onclick="show('progress')"><span class="ico">▥</span><span>Progress</span></button><div class="sep"></div><button data-v="schedule" onclick="show('schedule')"><span class="ico">▦</span><span>Schedule</span></button><button data-v="notes" onclick="show('notes')"><span class="ico">▣</span><span>Notes</span></button><button data-v="resources" onclick="show('resources')"><span class="ico">◫</span><span>Resources</span></button><button data-v="settings" onclick="show('settings')"><span class="ico">⚙</span><span>Settings</span></button></div><div class="quote">“Discipline<br>turns knowledge<br>into confidence.”<br><br>— Cherub</div></aside><div class="main"><div class="topbar"><div class="motto">Think Strategically <span>|</span> Manage Risk <span>|</span> Protect Value <span>|</span> Lead with Confidence</div><div class="user"><div>☀</div><div class="usericon">◉</div><div class="usertext"><b>Welcome</b><span>Ready to Begin</span></div></div></div><div class="content"><section id="dashboard" class="view active"><div class="topgrid"><div class="lefttop"><div class="titlegate"><div class="titlecopy"><h1>Your Cherub Readiness</h1><p>Complete the 150-question pre-test to unlock your baseline scores and personalized study plan.</p></div><div class="pregate"><div class="lock">🔒</div><div><b>Pre-Test Required</b><small>All scores will be calculated after completion.</small></div></div></div><div class="card readiness"><h2>Overall Readiness</h2><div class="readybody"><div class="ring"><div><strong id="readinessScore">--</strong><small>Readiness Score<br>(200 – 800)</small></div></div><div class="status"><h3 id="readinessStatus">Not Started</h3><p>Take the 150-question pre-test to see your baseline<br>and start your personalized plan.</p><div class="metrics"><div class="metric"><div><b id="questionsAnswered">N/A</b><span>Questions<br>Answered</span></div></div><div class="metric"><div><b id="accuracyMetric">N/A</b><span>Accuracy</span></div></div><div class="metric"><div><b id="projectedMetric">N/A</b><span>Projected<br>Readiness</span></div></div><div class="metric"><div><b id="confidenceMetric">N/A</b><span>Readiness<br>Confidence</span></div></div></div></div></div></div></div><div class="card mapcard"><div class="maphead"><div class="mapicon">⌘</div><div><h3>Study Map</h3><p>Explore the relationships between security-management concepts.</p></div></div><div class="orbit"><div class="node n1"><div><b>D1</b><br>Governance</div></div><div class="node n2"><div><b>D2</b><br>Risk<br>Management</div></div><div class="node n3"><div><b>D3</b><br>Program<br>Development</div></div><div class="node n4"><div><b>D4</b><br>Incident<br>Management</div></div><div class="center">Cherub</div></div><button class="openmap" onclick="show('map')">▧ &nbsp; Open Study Map</button></div><div class="rightstack"><div class="card schedule"><div class="schedulehead"><div class="cal">▦</div><div><h3>6-Week Study Plan</h3><p>Your structured path to success.</p></div></div><div class="weeklist"><div class="week"><span class="wk"><span class="dot"></span>Week 1</span><span>150Q Pre-Test (Resumable)</span><span class="pending">Pending</span></div><div class="week"><span class="wk"><span class="dot"></span>Week 2</span><span>Adaptive Practice (Every 2–3 Days)</span><span class="pending">Pending</span></div><div class="week"><span class="wk"><span class="dot"></span>Week 3</span><span>150Q Full Exam (One Sitting)</span><span class="pending">Pending</span></div><div class="week"><span class="wk"><span class="dot"></span>Week 4</span><span>150Q Full Exam (One Sitting)</span><span class="pending">Pending</span></div><div class="week"><span class="wk"><span class="dot"></span>Week 5</span><span>150Q Full Exam (One Sitting)</span><span class="pending">Pending</span></div><div class="week"><span class="wk"><span class="dot"></span>Week 6</span><span>150Q Full Exam (One Sitting)</span><span class="pending">Pending</span></div></div></div><div class="card quotecard">📖 &nbsp; “Preparation today, confidence tomorrow.”</div></div></div><div id="domainCards" class="domains"></div><div class="footer"><span>Cherub Mastery Engine &nbsp;|&nbsp; Built for Focus. Designed for Results.</span><span>Cherub Training Readiness &nbsp;|&nbsp; Current mastery outline weighting 17 / 20 / 33 / 30</span></div></section><section id="practice" class="view"><div class="enginewrap"><div id="resumeBanner" class="resumeBanner"><div><b>Pre-Test in progress</b><div class="tiny" id="resumeText"></div></div><button class="enginebtn" id="resumeBtn">Resume</button></div><div class="card placeholder"><h1>Practice</h1><p>Start with the mandatory 150-question cold pre-test. Your answer, confidence, reasoning and eliminated distractor save immediately.</p><div class="practicegrid"><div class="card pcard"><h3>150Q Pre-Test</h3><p>150 questions • current 17/20/33/30 weighting • resumable.</p><button id="startPretest">Start / Resume</button></div><div class="card pcard"><h3>Adaptive Practice</h3><p>Hard/Harder sessions target your weakest relationships.</p><button id="startAdaptive" disabled>Locked</button></div><div class="card pcard"><h3>Weekly Full Exam</h3><p>Weeks 3–6 • fresh 150Q • one sitting • no resume.</p><button id="startExam" disabled>Locked</button></div></div></div><div id="quizHost" class="hidden"></div></div></section><section id="map" class="view"><div class="card placeholder"><h1>Study Map</h1><p>Relationship mastery is calculated from your actual attempts. Weak paths receive more adaptive questions.</p><div id="mapContent" class="mapchain"></div></div></section><section id="progress" class="view"><div class="card placeholder"><div class="enginebar"><div><h1>Progress</h1><p>Training analytics — Cherub internal training score.</p></div><div><button class="enginebtn secondary" id="exportProgress">Export Backup</button> <button class="enginebtn secondary" id="importProgress">Import</button><input id="importFile" type="file" accept="application/json" class="hidden"></div></div><div id="progressContent"></div></div></section><section id="schedule" class="view"><div class="card placeholder"><h1>Schedule</h1><p>Week 1 baseline. Week 2 adaptive. Weeks 3–6 each include one fresh 150-question full exam in one sitting.</p></div></section><section id="notes" class="view"><div class="card placeholder"><h1>Notes</h1></div></section><section id="resources" class="view"><div class="card placeholder"><h1>Resources</h1></div></section><section id="settings" class="view"><div class="card placeholder"><h1>Settings</h1></div></section></div></div><script src="js/app.js?v=2026.09.10.3"></script><script src="js/study-map.js?v=2026.09.11.2"></script></body></html>
-Footer
-© 2026 GitHub, Inc.
-Footer navigation
-Terms
-Privacy
-Security
-Status
-Community
-Docs
-Contact
-Manage cookies
-Do not share my personal information
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Cherub</title>
+    <style>
+      :root {
+        --bg: #f5f7fb;
+        --panel: #fff;
+        --ink: #0f1f3a;
+        --muted: #587099;
+        --line: #d8e1ed;
+        --sidebar: #172a45;
+        --sidebar2: #10223b;
+        --active: #285fa9;
+        --blue: #2f72e6;
+        --green: #2eb06a;
+        --purple: #8b42d3;
+        --orange: #e4770d;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        width: 100%;
+        min-height: 100%;
+        background: var(--bg);
+        color: var(--ink);
+        font-family:
+          Inter,
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Arial,
+          sans-serif;
+      }
+      body {
+        display: grid;
+        grid-template-columns: 198px minmax(0, 1fr);
+      }
+      .sidebar {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        background: linear-gradient(180deg, var(--sidebar), var(--sidebar2));
+        padding: 15px 10px;
+        color: #fff;
+      }
+      .brand {
+        height: 58px;
+        display: flex;
+        align-items: flex-start;
+        gap: 9px;
+        padding: 0 10px;
+      }
+      .shield {
+        font-size: 34px;
+        line-height: 1;
+      }
+      .brand h1 {
+        font-size: 20px;
+        line-height: 1;
+        margin: 1px 0 0;
+        font-weight: 800;
+        letter-spacing: 0.01em;
+      }
+      .brand small {
+        display: block;
+        font-size: 12px;
+        color: #c9d3e1;
+        margin-top: 5px;
+        font-weight: 400;
+      }
+      .menu {
+        margin-top: 10px;
+      }
+      .menu button {
+        height: 46px;
+        width: 100%;
+        border: 0;
+        border-radius: 8px;
+        background: transparent;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 0 14px;
+        margin: 3px 0;
+        font-size: 14px;
+        text-align: left;
+        cursor: pointer;
+      }
+      .menu button.active {
+        background: var(--active);
+      }
+      .ico {
+        width: 22px;
+        text-align: center;
+        font-size: 18px;
+      }
+      .sep {
+        height: 1px;
+        background: rgba(255, 255, 255, 0.18);
+        margin: 11px 10px;
+      }
+      .quote {
+        position: absolute;
+        left: 25px;
+        bottom: 30px;
+        width: 135px;
+        font-family: Georgia, serif;
+        font-style: italic;
+        font-size: 13px;
+        line-height: 1.5;
+        color: #f0f4fb;
+      }
+      .main {
+        min-width: 0;
+      }
+      .topbar {
+        height: 66px;
+        background: #fff;
+        border-bottom: 1px solid var(--line);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 24px;
+      }
+      .motto {
+        font-family: Georgia, serif;
+        font-size: 14px;
+        color: #4b5669;
+      }
+      .motto span {
+        padding: 0 10px;
+        color: #b0bac9;
+      }
+      .user {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+        font-size: 12px;
+      }
+      .usericon {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: #edf1f7;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 17px;
+      }
+      .usertext b {
+        display: block;
+        line-height: 1.2;
+      }
+      .usertext span {
+        color: #52698b;
+      }
+      .content {
+        padding: 13px 14px 10px 20px;
+      }
+      .view {
+        display: none;
+      }
+      .view.active {
+        display: block;
+      }
+      .topgrid {
+        display: grid;
+        grid-template-columns: minmax(560px, 1fr) 300px 289px;
+        gap: 12px;
+        align-items: start;
+      }
+      .lefttop {
+        min-width: 0;
+      }
+      .titlegate {
+        height: 80px;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 182px;
+        gap: 12px;
+        align-items: start;
+      }
+      .titlecopy {
+        padding: 8px 0 0 11px;
+      }
+      .titlecopy h1 {
+        font-size: 31px;
+        line-height: 1;
+        margin: 0 0 8px;
+        letter-spacing: -0.025em;
+      }
+      .titlecopy p {
+        font-size: 13px;
+        color: #4f668d;
+        margin: 0;
+        white-space: nowrap;
+      }
+      .pregate {
+        height: 70px;
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 13px;
+        box-shadow: 0 3px 12px rgba(27, 46, 77, 0.05);
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        padding: 13px;
+      }
+      .lock {
+        font-size: 24px;
+        color: #d77700;
+        line-height: 1;
+      }
+      .pregate b {
+        display: block;
+        font-size: 13px;
+        margin-bottom: 3px;
+      }
+      .pregate small {
+        font-size: 10px;
+        color: #60708b;
+        line-height: 1.25;
+        display: block;
+      }
+      .card {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        box-shadow: 0 3px 12px rgba(27, 46, 77, 0.045);
+      }
+      .readiness {
+        height: 284px;
+        padding: 15px 18px;
+      }
+      .readiness h2 {
+        font-size: 18px;
+        margin: 0 0 9px;
+      }
+      .readybody {
+        display: grid;
+        grid-template-columns: 185px minmax(0, 1fr);
+        gap: 20px;
+        align-items: center;
+      }
+      .ring {
+        width: 157px;
+        height: 157px;
+        border: 14px solid #e2e8f1;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        margin-left: 5px;
+      }
+      .ring strong {
+        display: block;
+        font-size: 33px;
+        letter-spacing: 0.06em;
+        margin-bottom: 7px;
+      }
+      .ring small {
+        font-size: 12px;
+        color: #475f86;
+        line-height: 1.3;
+      }
+      .status {
+        padding-top: 4px;
+      }
+      .status h3 {
+        font-size: 21px;
+        margin: 0 0 7px;
+      }
+      .status p {
+        font-size: 13px;
+        color: #6b7c95;
+        margin: 0;
+        line-height: 1.45;
+      }
+      .metrics {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 9px;
+        margin-top: 46px;
+      }
+      .metric {
+        height: 82px;
+        border: 1px solid #e0e6ef;
+        border-radius: 9px;
+        background: #fafbfe;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+      .metric b {
+        font-size: 17px;
+        display: block;
+        margin-bottom: 4px;
+      }
+      .metric span {
+        font-size: 11px;
+        line-height: 1.15;
+        color: #31466b;
+      }
+      .mapcard {
+        height: 364px;
+        padding: 14px 13px 12px;
+      }
+      .maphead {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+      }
+      .mapicon {
+        font-size: 25px;
+        color: #1664e8;
+      }
+      .maphead h3 {
+        font-size: 17px;
+        margin: 1px 0 4px;
+      }
+      .maphead p {
+        font-size: 10.5px;
+        color: #5e7090;
+        margin: 0;
+      }
+      .orbit {
+        height: 251px;
+        position: relative;
+        margin-top: 3px;
+      }
+      .orbit:before {
+        content: "";
+        position: absolute;
+        left: 55px;
+        right: 55px;
+        top: 43px;
+        bottom: 43px;
+        border: 4px solid #e0e6ef;
+        border-radius: 50%;
+      }
+      .center {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        border: 2px solid #cbd4e2;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+      }
+      .node {
+        position: absolute;
+        width: 88px;
+        height: 88px;
+        border: 2px solid;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        font-size: 10px;
+        line-height: 1.15;
+      }
+      .node b {
+        font-size: 15px;
+      }
+      .n1 {
+        left: 50%;
+        top: 1px;
+        transform: translateX(-50%);
+        border-color: #4f8cff;
+        background: #edf4ff;
+      }
+      .n2 {
+        right: 8px;
+        top: 80px;
+        border-color: #30af69;
+        background: #ecfaf2;
+      }
+      .n3 {
+        left: 50%;
+        bottom: 1px;
+        transform: translateX(-50%);
+        border-color: #8a53dc;
+        background: #f5efff;
+      }
+      .n4 {
+        left: 8px;
+        top: 80px;
+        border-color: #e77a12;
+        background: #fff4e8;
+      }
+      .openmap {
+        height: 36px;
+        width: 100%;
+        border: 1px solid #c9d8f4;
+        border-radius: 7px;
+        background: #eef4ff;
+        color: #105bd6;
+        font-weight: 700;
+        font-size: 12px;
+        cursor: pointer;
+      }
+      .rightstack {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .schedule {
+        height: 297px;
+        padding: 14px 13px;
+      }
+      .schedulehead {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+      }
+      .cal {
+        font-size: 24px;
+        color: #1769ea;
+      }
+      .schedule h3 {
+        font-size: 17px;
+        margin: 0 0 4px;
+      }
+      .schedule p {
+        font-size: 10.5px;
+        color: #5e7090;
+        margin: 0;
+      }
+      .weeklist {
+        margin-top: 10px;
+      }
+      .week {
+        height: 36px;
+        display: grid;
+        grid-template-columns: 64px minmax(0, 1fr) 51px;
+        gap: 5px;
+        align-items: center;
+        border-bottom: 1px solid #edf0f4;
+        font-size: 9.5px;
+      }
+      .week:last-child {
+        border-bottom: 0;
+      }
+      .wk {
+        color: #1f4e96;
+        font-size: 11px;
+        white-space: nowrap;
+      }
+      .dot {
+        display: inline-block;
+        width: 11px;
+        height: 11px;
+        background: #2d73e6;
+        border-radius: 50%;
+        margin-right: 6px;
+        vertical-align: -1px;
+      }
+      .pending {
+        justify-self: end;
+        background: #eef1f5;
+        color: #62718a;
+        border-radius: 999px;
+        padding: 4px 6px;
+        font-size: 9px;
+      }
+      .quotecard {
+        height: 58px;
+        background: linear-gradient(135deg, #f4f7ff, #e9efff);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: Georgia, serif;
+        font-style: italic;
+        font-size: 12px;
+      }
+      .domains {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin-top: 12px;
+      }
+      .domain {
+        height: 244px;
+        padding: 11px 13px;
+      }
+      .domainhead {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr) auto;
+        gap: 10px;
+        align-items: center;
+        margin-bottom: 7px;
+      }
+      .badge {
+        font-size: 19px;
+        font-weight: 800;
+        color: #fff;
+        border-radius: 7px;
+        padding: 5px 11px;
+        line-height: 1;
+      }
+      .d1 {
+        background: var(--blue);
+      }
+      .d2 {
+        background: var(--green);
+      }
+      .d3 {
+        background: var(--purple);
+      }
+      .d4 {
+        background: var(--orange);
+      }
+      .domainhead h3 {
+        font-size: 13px;
+        line-height: 1.2;
+        margin: 0;
+      }
+      .weight {
+        font-size: 11px;
+        font-weight: 700;
+        background: #eff2f6;
+        color: #52617a;
+        padding: 4px 8px;
+        border-radius: 999px;
+      }
+      .topic {
+        height: 32px;
+        padding-top: 5px;
+        border-bottom: 1px solid #edf0f4;
+      }
+      .topicline {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 11.5px;
+        margin-bottom: 3px;
+      }
+      .track {
+        height: 8px;
+        background: #e4e9f0;
+        border-radius: 999px;
+      }
+      .train {
+        height: 44px;
+        width: 100%;
+        margin-top: 8px;
+        border: 0;
+        border-radius: 8px;
+        background: #edf3ff;
+        color: #2459b9;
+        text-align: left;
+        padding: 7px 11px;
+        font-weight: 700;
+        font-size: 12px;
+      }
+      .train small {
+        display: block;
+        margin: 2px 0 0 26px;
+        font-size: 9.5px;
+        font-weight: 400;
+        color: #617392;
+      }
+      .footer {
+        display: flex;
+        justify-content: space-between;
+        font-size: 9px;
+        color: #64748b;
+        padding: 10px 1px 0;
+      }
+      .placeholder {
+        padding: 28px;
+      }
+      .placeholder h1 {
+        margin-top: 0;
+      }
+      .practicegrid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+      }
+      .pcard {
+        padding: 16px;
+      }
+      .pcard button {
+        border: 0;
+        border-radius: 8px;
+        background: #dfe6f2;
+        color: #728198;
+        padding: 9px 11px;
+        font-weight: 700;
+      }
+      .enginewrap {
+        max-width: 1050px;
+        margin: 0 auto;
+      }
+      .enginebar {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        align-items: center;
+        margin-bottom: 12px;
+      }
+      .epill {
+        display: inline-block;
+        padding: 5px 9px;
+        border-radius: 999px;
+        background: #eef4ff;
+        color: #315b9d;
+        font-size: 11px;
+        margin-right: 5px;
+      }
+      .qprogress {
+        height: 9px;
+        background: #e4e9f0;
+        border-radius: 999px;
+        overflow: hidden;
+        margin: 12px 0 18px;
+      }
+      .qprogress > div {
+        height: 100%;
+        background: #2f72e6;
+      }
+      .questioncard {
+        padding: 22px;
+      }
+      .questioncard h2 {
+        font-size: 21px;
+        line-height: 1.4;
+      }
+      .qoption {
+        display: block;
+        width: 100%;
+        border: 1px solid #d4deeb;
+        border-radius: 10px;
+        background: white;
+        padding: 13px 14px;
+        margin: 9px 0;
+        text-align: left;
+        color: #142540;
+        cursor: pointer;
+      }
+      .qoption:hover {
+        background: #f7faff;
+      }
+      .qoption.selected {
+        border-color: #2f72e6;
+        box-shadow: 0 0 0 2px rgba(47, 114, 230, 0.13);
+      }
+      .qcontrols {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+        margin-top: 18px;
+      }
+      .qcontrols label {
+        font-size: 12px;
+        font-weight: 700;
+      }
+      .qcontrols textarea,
+      .qcontrols select {
+        width: 100%;
+        margin-top: 6px;
+        border: 1px solid #d4deeb;
+        border-radius: 9px;
+        padding: 10px;
+        background: #fff;
+        color: #142540;
+      }
+      .qcontrols textarea {
+        min-height: 74px;
+      }
+      .confidence {
+        display: flex;
+        gap: 7px;
+        margin-top: 7px;
+      }
+      .confidence button,
+      .enginebtn {
+        border: 0;
+        border-radius: 8px;
+        padding: 9px 12px;
+        font-weight: 700;
+        cursor: pointer;
+      }
+      .confidence button {
+        background: #edf2f8;
+        color: #294266;
+      }
+      .confidence button.active {
+        background: #2f72e6;
+        color: #fff;
+      }
+      .enginebtn {
+        background: #2f72e6;
+        color: #fff;
+      }
+      .enginebtn.secondary {
+        background: #edf2f8;
+        color: #294266;
+      }
+      .feedbackbox {
+        margin-top: 18px;
+        padding: 16px;
+        border-radius: 10px;
+        background: #f6f9fe;
+        border: 1px solid #d8e5f8;
+        line-height: 1.5;
+      }
+      .resumeBanner {
+        display: none;
+        margin: 0 0 12px;
+        padding: 12px 14px;
+        border-radius: 9px;
+        background: #fff7e7;
+        border: 1px solid #f4d391;
+      }
+      .resumeBanner.show {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+      }
+      .progressgrid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+      .progresscard {
+        padding: 16px;
+      }
+      .tiny {
+        font-size: 11px;
+        color: #657896;
+      }
+      .mapchain {
+        padding: 16px;
+        line-height: 1.8;
+        font-size: 14px;
+      }
+      .mapchain span {
+        display: inline-block;
+        background: #eef4ff;
+        border: 1px solid #cad9f0;
+        border-radius: 8px;
+        padding: 5px 8px;
+        margin: 3px;
+      }
+      .notice {
+        padding: 12px 14px;
+        background: #eef7ff;
+        border: 1px solid #d2e7fb;
+        border-radius: 9px;
+        margin-bottom: 12px;
+        font-size: 12px;
+      }
+      .hidden {
+        display: none !important;
+      }
+      @media (max-width: 1260px) {
+        body {
+          grid-template-columns: 78px 1fr;
+        }
+        .brand h1,
+        .brand small,
+        .menu button span,
+        .quote {
+          display: none;
+        }
+        .brand {
+          justify-content: center;
+        }
+        .menu button {
+          justify-content: center;
+        }
+        .topgrid {
+          grid-template-columns: 1fr 300px;
+        }
+        .rightstack {
+          grid-column: 1/-1;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+        }
+        .schedule,
+        .quotecard {
+          height: auto;
+        }
+      }
+      @media (max-width: 900px) {
+        body {
+          display: block;
+        }
+        .sidebar {
+          position: relative;
+          height: auto;
+          display: flex;
+          overflow: auto;
+        }
+        .brand,
+        .quote,
+        .sep {
+          display: none;
+        }
+        .menu {
+          display: flex;
+          margin: 0;
+        }
+        .menu button {
+          width: auto;
+        }
+        .menu button span {
+          display: inline;
+        }
+        .topgrid,
+        .domains,
+        .practicegrid {
+          grid-template-columns: 1fr;
+        }
+        .titlegate {
+          grid-template-columns: 1fr;
+          height: auto;
+        }
+        .pregate {
+          margin: 8px 0;
+        }
+        .rightstack {
+          display: block;
+        }
+        .schedule {
+          margin-bottom: 10px;
+        }
+        .readiness {
+          height: auto;
+        }
+        .readybody,
+        .metrics,
+        .qcontrols,
+        .progressgrid {
+          grid-template-columns: 1fr;
+        }
+        .mapcard,
+        .schedule,
+        .domain {
+          height: auto;
+        }
+        .titlecopy p {
+          white-space: normal;
+        }
+        .enginebar {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="shield">♢</div>
+        <div>
+          <h1>Cherub</h1>
+          <small>Mastery Engine</small>
+        </div>
+      </div>
+      <div class="menu">
+        <button class="active" data-v="dashboard" onclick="show('dashboard')">
+          <span class="ico">⌂</span><span>Dashboard</span></button
+        ><button data-v="practice" onclick="show('practice')">
+          <span class="ico">◉</span><span>Practice</span></button
+        ><button data-v="map" onclick="show('map')">
+          <span class="ico">⌘</span><span>Study Map</span></button
+        ><button data-v="index" onclick="show('index')">
+          <span class="ico">⌕</span><span>Index</span></button
+        ><button data-v="progress" onclick="show('progress')">
+          <span class="ico">▥</span><span>Progress</span>
+        </button>
+        <div class="sep"></div>
+        <button data-v="schedule" onclick="show('schedule')">
+          <span class="ico">▦</span><span>Schedule</span></button
+        ><button data-v="notes" onclick="show('notes')">
+          <span class="ico">▣</span><span>Notes</span></button
+        ><button data-v="resources" onclick="show('resources')">
+          <span class="ico">◫</span><span>Resources</span></button
+        ><button data-v="settings" onclick="show('settings')">
+          <span class="ico">⚙</span><span>Settings</span>
+        </button>
+      </div>
+      <div class="quote">
+        “Discipline<br />turns knowledge<br />into confidence.”<br /><br />—
+        Cherub
+      </div>
+    </aside>
+    <div class="main">
+      <div class="topbar">
+        <div class="motto">
+          Think Strategically <span>|</span> Manage Risk <span>|</span> Protect
+          Value <span>|</span> Lead with Confidence
+        </div>
+        <div class="user">
+          <div>☀</div>
+          <div class="usericon">◉</div>
+          <div class="usertext"><b>Welcome</b><span>Ready to Begin</span></div>
+        </div>
+      </div>
+      <div class="content">
+        <section id="dashboard" class="view active">
+          <div class="topgrid">
+            <div class="lefttop">
+              <div class="titlegate">
+                <div class="titlecopy">
+                  <h1>Your Cherub Readiness</h1>
+                  <p>
+                    Complete the 150-question pre-test to unlock your baseline
+                    scores and personalized study plan.
+                  </p>
+                </div>
+                <div class="pregate">
+                  <div class="lock">🔒</div>
+                  <div>
+                    <b>Pre-Test Required</b
+                    ><small
+                      >All scores will be calculated after completion.</small
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="card readiness">
+                <h2>Overall Readiness</h2>
+                <div class="readybody">
+                  <div class="ring">
+                    <div>
+                      <strong id="readinessScore">--</strong
+                      ><small>Readiness Score<br />(200 – 800)</small>
+                    </div>
+                  </div>
+                  <div class="status">
+                    <h3 id="readinessStatus">Not Started</h3>
+                    <p>
+                      Take the 150-question pre-test to see your baseline<br />and
+                      start your personalized plan.
+                    </p>
+                    <div class="metrics">
+                      <div class="metric">
+                        <div>
+                          <b id="questionsAnswered">N/A</b
+                          ><span>Questions<br />Answered</span>
+                        </div>
+                      </div>
+                      <div class="metric">
+                        <div>
+                          <b id="accuracyMetric">N/A</b><span>Accuracy</span>
+                        </div>
+                      </div>
+                      <div class="metric">
+                        <div>
+                          <b id="projectedMetric">N/A</b
+                          ><span>Projected<br />Readiness</span>
+                        </div>
+                      </div>
+                      <div class="metric">
+                        <div>
+                          <b id="confidenceMetric">N/A</b
+                          ><span>Readiness<br />Confidence</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card mapcard">
+              <div class="maphead">
+                <div class="mapicon">⌘</div>
+                <div>
+                  <h3>Study Map</h3>
+                  <p>
+                    Explore the relationships between security-management
+                    concepts.
+                  </p>
+                </div>
+              </div>
+              <div class="orbit">
+                <div class="node n1">
+                  <div><b>D1</b><br />Governance</div>
+                </div>
+                <div class="node n2">
+                  <div><b>D2</b><br />Risk<br />Management</div>
+                </div>
+                <div class="node n3">
+                  <div><b>D3</b><br />Program<br />Development</div>
+                </div>
+                <div class="node n4">
+                  <div><b>D4</b><br />Incident<br />Management</div>
+                </div>
+                <div class="center">Cherub</div>
+              </div>
+              <button class="openmap" onclick="show('map')">
+                ▧ &nbsp; Open Study Map
+              </button>
+            </div>
+            <div class="rightstack">
+              <div class="card schedule">
+                <div class="schedulehead">
+                  <div class="cal">▦</div>
+                  <div>
+                    <h3>6-Week Study Plan</h3>
+                    <p>Your structured path to success.</p>
+                  </div>
+                </div>
+                <div class="weeklist">
+                  <div class="week">
+                    <span class="wk"><span class="dot"></span>Week 1</span
+                    ><span>150Q Pre-Test (Resumable)</span
+                    ><span class="pending">Pending</span>
+                  </div>
+                  <div class="week">
+                    <span class="wk"><span class="dot"></span>Week 2</span
+                    ><span>Adaptive Practice (Every 2–3 Days)</span
+                    ><span class="pending">Pending</span>
+                  </div>
+                  <div class="week">
+                    <span class="wk"><span class="dot"></span>Week 3</span
+                    ><span>150Q Full Exam (One Sitting)</span
+                    ><span class="pending">Pending</span>
+                  </div>
+                  <div class="week">
+                    <span class="wk"><span class="dot"></span>Week 4</span
+                    ><span>150Q Full Exam (One Sitting)</span
+                    ><span class="pending">Pending</span>
+                  </div>
+                  <div class="week">
+                    <span class="wk"><span class="dot"></span>Week 5</span
+                    ><span>150Q Full Exam (One Sitting)</span
+                    ><span class="pending">Pending</span>
+                  </div>
+                  <div class="week">
+                    <span class="wk"><span class="dot"></span>Week 6</span
+                    ><span>150Q Full Exam (One Sitting)</span
+                    ><span class="pending">Pending</span>
+                  </div>
+                </div>
+              </div>
+              <div class="card quotecard">
+                📖 &nbsp; “Preparation today, confidence tomorrow.”
+              </div>
+            </div>
+          </div>
+          <div id="domainCards" class="domains"></div>
+          <div class="footer">
+            <span
+              >Cherub Mastery Engine &nbsp;|&nbsp; Built for Focus. Designed for
+              Results.</span
+            ><span
+              >Cherub Training Readiness &nbsp;|&nbsp; Current mastery outline
+              weighting 17 / 20 / 33 / 30</span
+            >
+          </div>
+        </section>
+        <section id="practice" class="view">
+          <div class="enginewrap">
+            <div id="resumeBanner" class="resumeBanner">
+              <div>
+                <b>Pre-Test in progress</b>
+                <div class="tiny" id="resumeText"></div>
+              </div>
+              <button class="enginebtn" id="resumeBtn">Resume</button>
+            </div>
+            <div class="card placeholder">
+              <h1>Practice</h1>
+              <p>
+                Start with the mandatory 150-question cold pre-test. Your
+                answer, confidence, reasoning and eliminated distractor save
+                immediately.
+              </p>
+              <div class="practicegrid">
+                <div class="card pcard">
+                  <h3>150Q Pre-Test</h3>
+                  <p>
+                    150 questions • current 17/20/33/30 weighting • resumable.
+                  </p>
+                  <button id="startPretest">Start / Resume</button>
+                </div>
+                <div class="card pcard">
+                  <h3>Adaptive Practice</h3>
+                  <p>Hard/Harder sessions target your weakest relationships.</p>
+                  <button id="startAdaptive" disabled>Locked</button>
+                </div>
+                <div class="card pcard">
+                  <h3>Weekly Full Exam</h3>
+                  <p>Weeks 3–6 • fresh 150Q • one sitting • no resume.</p>
+                  <button id="startExam" disabled>Locked</button>
+                </div>
+              </div>
+            </div>
+            <div id="quizHost" class="hidden"></div>
+          </div>
+        </section>
+        <section id="map" class="view">
+          <div class="card placeholder">
+            <h1>Study Map</h1>
+            <p>
+              Relationship mastery is calculated from your actual attempts. Weak
+              paths receive more adaptive questions.
+            </p>
+            <div id="mapContent" class="mapchain"></div>
+          </div>
+        </section>
+        <section id="index" class="view">
+          <div class="card placeholder">
+            <h1>Learning Index</h1>
+            <p>Browse concepts, decision paths, and cross-domain links.</p>
+            <div id="indexContent"></div>
+          </div>
+        </section>
+        <section id="progress" class="view">
+          <div class="card placeholder">
+            <div class="enginebar">
+              <div>
+                <h1>Progress</h1>
+                <p>Training analytics — Cherub internal training score.</p>
+              </div>
+              <div>
+                <button class="enginebtn secondary" id="exportProgress">
+                  Export Backup
+                </button>
+                <button class="enginebtn secondary" id="importProgress">
+                  Import</button
+                ><input
+                  id="importFile"
+                  type="file"
+                  accept="application/json"
+                  class="hidden"
+                />
+              </div>
+            </div>
+            <div id="progressContent"></div>
+          </div>
+        </section>
+        <section id="schedule" class="view">
+          <div class="card placeholder">
+            <h1>Schedule</h1>
+            <p>
+              Week 1 baseline. Week 2 adaptive. Weeks 3–6 each include one fresh
+              150-question full exam in one sitting.
+            </p>
+          </div>
+        </section>
+        <section id="notes" class="view">
+          <div class="card placeholder"><h1>Notes</h1></div>
+        </section>
+        <section id="resources" class="view">
+          <div class="card placeholder"><h1>Resources</h1></div>
+        </section>
+        <section id="settings" class="view">
+          <div class="card placeholder"><h1>Settings</h1></div>
+        </section>
+      </div>
+    </div>
+    <script src="js/app.js?v=2026.09.10.3"></script>
+    <script src="js/study-map.js?v=2026.09.11.2"></script>
+    <script src="js/view-events.js?v=2026.09.11.3"></script>
+    <script src="js/learning-index.js?v=2026.09.11.3"></script>
+    <script src="js/next-action.js?v=2026.09.11.3"></script>
+    <script src="js/map-routing.js?v=2026.09.11.3"></script>
+    <script src="js/schedule-detail.js?v=2026.09.11.3"></script>
+    <script src="js/notes-context.js?v=2026.09.11.3"></script>
+    <script src="js/resources-library.js?v=2026.09.11.3"></script>
+    <script src="js/progress-guidance.js?v=2026.09.11.3"></script>
+    <script src="js/storage-notice.js?v=2026.09.11.3"></script>
+  </body>
+</html>
+Footer © 2026 GitHub, Inc. Footer navigation Terms Privacy Security Status
+Community Docs Contact Manage cookies Do not share my personal information
