@@ -1,9 +1,9 @@
 {
-  "appVersion": "2026.09.11.18",
+  "appVersion": "2026.09.11.19",
   "schemaVersion": 7,
-  "contentVersion": "2026.09.11.adaptive-pause-resume-route-fix",
+  "contentVersion": "2026.09.11.second-audit-resume-and-copy-fixes",
   "questionEngine": "relationship-driven-v5",
   "storage": "local-browser-with-json-backup",
   "autoUpdate": true,
-  "updated": "2026-09-11T10:50:00Z"
+  "updated": "2026-09-11T11:10:00Z"
 }
