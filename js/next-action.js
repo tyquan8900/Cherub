@@ -3,9 +3,12 @@
   function render() {
     const target = document.querySelector('#dashboard .lefttop');
     if (!target || target.querySelector('.cherub-next')) return;
-    const hasProgress = (() => { try { return JSON.parse(localStorage.getItem('cherub.progress.v7') || '{}').attempts?.length; } catch { return false; } })();
+    let p = {}; try { p = JSON.parse(localStorage.getItem('cherub.progress.v7') || '{}'); } catch {}
+    const hasProgress = p.attempts?.length;
     const card = document.createElement('div'); card.className = 'notice cherub-next';
-    card.innerHTML = hasProgress ? '<b>Next best action:</b> Resume your pre-test to complete the baseline.' : '<b>Start here:</b> Take the resumable 150-question cold pre-test. It unlocks your baseline, weak paths, and adaptive practice.';
+    const misses = (p.attempts || []).filter(a => !a.ok); const weak = misses.sort((a,b) => (b.confidence || 0) - (a.confidence || 0))[0];
+    card.innerHTML = !hasProgress ? '<b>Start here:</b> Take the resumable 150-question cold pre-test. It unlocks your baseline, weak paths, and adaptive practice.' : !p.completedPretest ? '<b>Next best action:</b> Resume your pre-test to complete the baseline.' : weak ? `<b>Next best action:</b> Retrain <button class="enginebtn secondary" data-weak="1">${weak.concept || weak.relation}</button>` : '<b>Next best action:</b> Start an adaptive practice set.';
+    card.querySelector('[data-weak]')?.addEventListener('click', () => window.dispatchEvent(new CustomEvent('cherub:knowledge', { detail: { domain: `D${weak.d}`, concept: weak.concept, path: weak.relation } })));
     target.append(card);
   }
   window.addEventListener('cherub:view', e => { if (e.detail.id === 'dashboard') render(); });
