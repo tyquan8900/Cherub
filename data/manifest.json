@@ -1,9 +1,9 @@
 {
-  "appVersion": "2026.09.11.22",
+  "appVersion": "2026.09.11.23",
   "schemaVersion": 7,
-  "contentVersion": "2026.09.11.visual-learning-map-layer",
+  "contentVersion": "2026.09.11.23.20q-neutral-diagnostic",
   "questionEngine": "relationship-driven-v5",
   "storage": "local-browser-with-json-backup",
   "autoUpdate": true,
-  "updated": "2026-09-11T12:00:00Z"
+  "updated": "2026-09-11T12:30:00Z"
 }
