@@ -11,7 +11,7 @@
   const n = {
     D1: "Governance",
     D2: "Risk Management",
-    D3: "Program Development",
+    D3: "Information Security Program",
     D4: "Incident Management",
   };
   const links = {
