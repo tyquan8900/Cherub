@@ -1,7 +1,7 @@
 {
-  "appVersion": "2026.09.11.68",
+  "appVersion": "2026.09.11.69",
   "schemaVersion": 7,
-  "contentVersion": "2026.09.11.68.unique-concept-and-visual-flows",
+  "contentVersion": "2026.09.11.69.diagnostic-and-exam-wording",
   "questionEngine": "relationship-driven-v5",
   "storage": "local-browser-with-json-backup",
   "autoUpdate": true,
