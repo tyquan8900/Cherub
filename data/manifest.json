@@ -1,9 +1,9 @@
 {
-  "appVersion": "2026.09.11.7",
+  "appVersion": "2026.09.11.8",
   "schemaVersion": 7,
-  "contentVersion": "2026.09.11.focused-object-question-layer",
+  "contentVersion": "2026.09.11.weighted-scorecard-layer",
   "questionEngine": "relationship-driven-v3",
   "storage": "local-browser-with-json-backup",
   "autoUpdate": true,
-  "updated": "2026-09-11T07:05:00Z"
+  "updated": "2026-09-11T07:25:00Z"
 }
