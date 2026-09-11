@@ -1,7 +1,7 @@
 {
-  "appVersion": "2026.09.11.67",
+  "appVersion": "2026.09.11.68",
   "schemaVersion": 7,
-  "contentVersion": "2026.09.11.67.concept-specific-visual-maps",
+  "contentVersion": "2026.09.11.68.unique-concept-and-visual-flows",
   "questionEngine": "relationship-driven-v5",
   "storage": "local-browser-with-json-backup",
   "autoUpdate": true,
