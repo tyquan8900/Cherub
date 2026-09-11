@@ -78,7 +78,7 @@
     const visualRefs = x.domain === 'D4' ? ['BIA impact and dependency table', 'RTO/RPO recovery-objective matrix', 'Recovery-test results and deficiency trend chart'] : x.domain === 'D2' ? ['Risk register and treatment table', 'Inherent-to-residual risk comparison chart', 'Risk trend and reassessment dashboard'] : x.domain === 'D3' ? ['Control design-to-evidence table', 'Control effectiveness test-results chart', 'Program metrics trend dashboard'] : ['Business-objective alignment table', 'Decision-rights and accountability diagram', 'Leadership metrics trend chart'];
     card.insertAdjacentHTML('beforeend', `<section aria-label="Visual references" style="margin-top:12px;padding:11px;border-radius:10px;background:#fffdf5;border:1px solid #f0dfad"><b style="font-size:13px">Use these visual references</b><ul class="tiny" style="margin:7px 0 0;padding-left:18px">${visualRefs.map(ref => `<li>${ref}</li>`).join('')}</ul></section>`);
     card.insertAdjacentHTML('beforeend', '<button class="enginebtn secondary" data-visual style="margin-top:10px">Open visual aid</button>');
-    card.querySelector('[data-visual]').onclick = () => window.dispatchEvent(new CustomEvent('cherub:visual', { detail: { domain: x.domain || c?.domain || 'D1' } }));
+    card.querySelector('[data-visual]').onclick = () => window.CherubVisualCatalog?.open(x.domain || c?.domain || 'D1');
     card.scrollIntoView({ behavior: "smooth", block: "nearest" });
     card.querySelector("[data-close]").onclick = () => card.remove();
     card.querySelectorAll("[data-related]").forEach((button) => button.onclick = () => window.dispatchEvent(new CustomEvent("cherub:knowledge", { detail: { domain: x.domain || "D1", concept: button.dataset.related } })));
