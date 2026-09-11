@@ -1,9 +1,9 @@
 {
-  "appVersion": "2026.09.11.4",
+  "appVersion": "2026.09.11.5",
   "schemaVersion": 7,
-  "contentVersion": "2026.09.10.full-operational",
+  "contentVersion": "2026.09.11.verified-domain-source-map",
   "questionEngine": "relationship-driven-v2",
   "storage": "local-browser-with-json-backup",
   "autoUpdate": true,
-  "updated": "2026-09-10T23:59:00Z"
+  "updated": "2026-09-11T06:30:00Z"
 }
