@@ -25,7 +25,7 @@
     host.querySelector('#indexSearch').oninput = e => render(e.target.value);
     host.querySelectorAll('[data-focus]').forEach(button => button.onclick = () => {
       const focus = { domain: button.dataset.focus, concept: button.dataset.concept || button.textContent };
-      window.Cherub.setFocus(focus); window.dispatchEvent(new CustomEvent('cherub:focus', { detail: focus }));
+      window.Cherub.setFocus(focus); window.dispatchEvent(new CustomEvent('cherub:knowledge', { detail: focus }));
     });
   }
   window.addEventListener('cherub:view', async e => { if (e.detail.id === 'index') { await load(); render(); } });
