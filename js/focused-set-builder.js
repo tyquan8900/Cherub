@@ -1,7 +1,7 @@
 'use strict';
 (() => {
   const domain = { D1: 'Governance', D2: 'Risk Management', D3: 'Information Security Program', D4: 'Incident Management' };
-  function unlocked() { try { const p=JSON.parse(localStorage.getItem('cherub.progress.v7') || '{}'); return !!p.completedPretest && p.pretestVersion === '20q-neutral-v1'; } catch { return false; } }
+  function unlocked() { try { const p=JSON.parse(localStorage.getItem('cherub.progress.v7') || '{}'); return !!p.completedPretest && p.pretestVersion === '20q-cism-format-v2'; } catch { return false; } }
   function show(focus) {
     const host = document.getElementById('indexContent') || document.getElementById('mapContent'); if (!host) return;
     host.querySelector('.cherub-builder')?.remove();
