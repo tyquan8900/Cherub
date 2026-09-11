@@ -1,6 +1,6 @@
 'use strict';
 (() => {
-  const domain = { D1: 'Governance', D2: 'Risk Management', D3: 'Program Development', D4: 'Incident Management' };
+  const domain = { D1: 'Governance', D2: 'Risk Management', D3: 'Information Security Program', D4: 'Incident Management' };
   function unlocked() { try { return !!JSON.parse(localStorage.getItem('cherub.progress.v7') || '{}').completedPretest; } catch { return false; } }
   function show(focus) {
     const host = document.getElementById('indexContent') || document.getElementById('mapContent'); if (!host) return;
