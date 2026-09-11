@@ -1,7 +1,7 @@
 {
-  "appVersion": "2026.09.11.50",
+  "appVersion": "2026.09.11.51",
   "schemaVersion": 7,
-  "contentVersion": "2026.09.11.50.relationship-lessons",
+  "contentVersion": "2026.09.11.51.relationship-connection-diagrams",
   "questionEngine": "relationship-driven-v5",
   "storage": "local-browser-with-json-backup",
   "autoUpdate": true,
