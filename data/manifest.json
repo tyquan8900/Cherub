@@ -1,9 +1,9 @@
 {
-  "appVersion": "2026.09.11.16",
+  "appVersion": "2026.09.11.17",
   "schemaVersion": 7,
-  "contentVersion": "2026.09.11.pause-and-resume-layer",
+  "contentVersion": "2026.09.11.visible-map-detail-route-fix",
   "questionEngine": "relationship-driven-v5",
   "storage": "local-browser-with-json-backup",
   "autoUpdate": true,
-  "updated": "2026-09-11T10:20:00Z"
+  "updated": "2026-09-11T10:35:00Z"
 }
