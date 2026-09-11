@@ -1,9 +1,9 @@
 {
-  "appVersion": "2026.09.11.40",
+  "appVersion": "2026.09.11.41",
   "schemaVersion": 7,
-  "contentVersion": "2026.09.11.40.high-resolution-badge-art",
+  "contentVersion": "2026.09.11.41.prominent-clear-badge-art",
   "questionEngine": "relationship-driven-v5",
   "storage": "local-browser-with-json-backup",
   "autoUpdate": true,
-  "updated": "2026-09-11T18:45:00Z"
+  "updated": "2026-09-11T19:00:00Z"
 }
