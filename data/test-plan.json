@@ -1,5 +1,5 @@
 {
-  "week1":{"type":"pretest","questions":150,"resumable":true,"showAnswersDuringTest":false,"purpose":"cold baseline"},
+  "week1":{"type":"pretest","questions":20,"difficulty":["Hard","Harder"],"resumable":true,"showAnswersDuringTest":false,"showTopicsDuringTest":false,"purpose":"cold baseline"},
   "week2":{"type":"adaptive","questionsPerSession":20,"cadenceDays":"2-3","resumable":true,"showAnswersDuringTest":true,"purpose":"attack weak relationships"},
   "week3":{"type":"full-exam","questions":150,"resumable":true,"showAnswersDuringTest":false,"freshBank":true},
   "week4":{"type":"full-exam","questions":150,"resumable":true,"showAnswersDuringTest":false,"freshBank":true},
