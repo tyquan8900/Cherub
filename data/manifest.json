@@ -1,7 +1,7 @@
 {
-  "appVersion": "2026.09.11.61",
+  "appVersion": "2026.09.11.62",
   "schemaVersion": 7,
-  "contentVersion": "2026.09.11.61.attributed-official-visual-references",
+  "contentVersion": "2026.09.11.62.concept-level-official-visual-links",
   "questionEngine": "relationship-driven-v5",
   "storage": "local-browser-with-json-backup",
   "autoUpdate": true,
