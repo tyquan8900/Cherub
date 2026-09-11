@@ -1,9 +1,9 @@
 {
-  "appVersion": "2026.09.11.12",
+  "appVersion": "2026.09.11.13",
   "schemaVersion": 7,
-  "contentVersion": "2026.09.11.scenario-family-question-layer",
+  "contentVersion": "2026.09.11.expanded-source-map-layer",
   "questionEngine": "relationship-driven-v5",
   "storage": "local-browser-with-json-backup",
   "autoUpdate": true,
-  "updated": "2026-09-11T09:00:00Z"
+  "updated": "2026-09-11T09:20:00Z"
 }
