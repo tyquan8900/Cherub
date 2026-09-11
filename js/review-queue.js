@@ -5,7 +5,7 @@
     const host = document.getElementById('progressContent');
     if (!host || host.querySelector('.cherub-review-queue')) return;
     let p = {}; try { p = JSON.parse(localStorage.getItem('cherub.progress.v7') || '{}'); } catch {}
-    if (!p.completedPretest || p.pretestVersion !== '20q-neutral-v1') return;
+    if (!p.completedPretest || p.pretestVersion !== '20q-cism-format-v2') return;
     const attempts = p.attempts || [];
     const priority = attempts.filter(a => !a.ok || (a.ok && a.confidence <= 25)).sort((a, b) => ((b.confidence || 0) - (a.confidence || 0))).slice(0, 12);
     const section = document.createElement('section'); section.className = 'card progresscard cherub-review-queue';
