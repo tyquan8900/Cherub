@@ -1,7 +1,7 @@
 'use strict';
 (() => {
   const plan = [
-    ['Week 1', 'Complete the resumable 150-question cold pre-test.'],
+    ['Week 1', 'Complete the resumable 20-question cold diagnostic.'],
     ['Week 2', 'Take adaptive Hard/Harder checkpoints every 2–3 days.'],
     ['Weeks 3–6', 'Take one fresh 150-question exam each week. Pause and resume are available; answers stay hidden until completion.']
   ];
