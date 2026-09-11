@@ -7,8 +7,7 @@ function importBackup(file){if(!file)return;const fr=new FileReader();fr.onload=
 function fixProgress(){const ex=$('exportProgress'),im=$('importProgress'),f=$('importFile');if(ex)ex.onclick=exportBackup;if(im&&f){im.onclick=()=>f.click();f.onchange=e=>importBackup(e.target.files?.[0])}}
 function fixNotes(){const b=$('saveNotes'),t=$('notesBox');if(b&&t)b.onclick=()=>{localStorage.setItem(NK,t.value);alert('Notes saved.')}}
 function fixSettings(){const ex=$('sx'),im=$('si'),f=$('sf'),reset=$('resetAll');if(ex)ex.onclick=exportBackup;if(im&&f){im.onclick=()=>f.click();f.onchange=e=>importBackup(e.target.files?.[0])}if(reset)reset.onclick=()=>{if(confirm('Reset ALL Cherub progress and notes on this browser?')){localStorage.removeItem(PK);localStorage.removeItem(SK);localStorage.removeItem(NK);localStorage.removeItem(ONK);location.reload()}}}
-function clearInvalidAdaptiveResume(){try{const s=JSON.parse(localStorage.getItem(SK)||'null');if(s?.mode==='adaptive'){localStorage.removeItem(SK);const b=$('resumeBanner');if(b)b.classList.remove('show')}}catch{}}
-function fix(){clearInvalidAdaptiveResume();fixProgress();fixNotes();fixSettings()}
+function fix(){fixProgress();fixNotes();fixSettings()}
 const orig=window.show;if(typeof orig==='function')window.show=function(id){orig(id);setTimeout(fix,0)};
 setTimeout(fix,0);
 })();
