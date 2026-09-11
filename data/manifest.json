@@ -1,9 +1,9 @@
 {
-  "appVersion": "2026.09.11.43",
+  "appVersion": "2026.09.11.44",
   "schemaVersion": 7,
-  "contentVersion": "2026.09.11.43.six-week-readiness-progression",
+  "contentVersion": "2026.09.11.44.rolling-rank-regression",
   "questionEngine": "relationship-driven-v5",
   "storage": "local-browser-with-json-backup",
   "autoUpdate": true,
-  "updated": "2026-09-11T19:40:00Z"
+  "updated": "2026-09-11T20:00:00Z"
 }
