@@ -1,9 +1,9 @@
 {
-  "appVersion": "2026.09.11.30",
+  "appVersion": "2026.09.11.31",
   "schemaVersion": 7,
-  "contentVersion": "2026.09.11.30.exam-journey-badges",
+  "contentVersion": "2026.09.11.31.visible-progress-zero-state",
   "questionEngine": "relationship-driven-v5",
   "storage": "local-browser-with-json-backup",
   "autoUpdate": true,
-  "updated": "2026-09-11T15:40:00Z"
+  "updated": "2026-09-11T15:55:00Z"
 }
