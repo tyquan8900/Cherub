@@ -1,9 +1,9 @@
 {
-  "appVersion": "2026.09.11.6",
+  "appVersion": "2026.09.11.7",
   "schemaVersion": 7,
-  "contentVersion": "2026.09.11.source-glossary-acronym-layer",
-  "questionEngine": "relationship-driven-v2",
+  "contentVersion": "2026.09.11.focused-object-question-layer",
+  "questionEngine": "relationship-driven-v3",
   "storage": "local-browser-with-json-backup",
   "autoUpdate": true,
-  "updated": "2026-09-11T06:45:00Z"
+  "updated": "2026-09-11T07:05:00Z"
 }
