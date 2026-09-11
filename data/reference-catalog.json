@@ -10,5 +10,6 @@
     {"id":"SRC-D3","label":"Current CISM exam content outline - Domain 3","type":"Scope reference","covers":"Information Security Program","rights":"ISACA-owned reference"},
     {"id":"SRC-D4","label":"Current CISM exam content outline - Domain 4","type":"Scope reference","covers":"Incident Management","rights":"ISACA-owned reference"}
   ],
+  "officialScopeReference": "https://support.isaca.org/s/article/Certification-CISM-Job-Practice-Update-2026",
   "cherubUse": "Original explanations, relationship maps, diagrams, tables, and practice questions are Cherub-created study aids derived from transformed learning relationships."
 }
