@@ -4,7 +4,7 @@ Cherub is a browser-based CISM reasoning and mastery engine using the locked v6 
 
 ## Operational flow
 
-1. Week 1 mandatory 150-question cold pre-test.
+1. Week 1 mandatory 20-question cold diagnostic (Hard/Harder; no topic labels or in-test answer feedback).
    - Current weighting: D1 17%, D2 20%, D3 33%, D4 30%.
    - Domain labels and answers are hidden during the cold test.
    - Progress autosaves after every submitted answer.
