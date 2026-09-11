@@ -777,6 +777,25 @@
       .mastery-ring small { font-size: 10px; color: #657896; }
       .mastery-card h3 { font-size: 13px; margin: 0 0 4px; }
       .mastery-card p { margin: 0; font-size: 11px; color: #657896; line-height: 1.35; }
+      .badge-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 10px;
+        margin-top: 12px;
+      }
+      .badge {
+        min-width: 0;
+        min-height: 108px;
+        padding: 12px;
+        border: 1px solid #d9e2ef;
+        border-radius: 12px;
+        background: #f8fafc;
+      }
+      .badge.earned { background: #f0f8ee; border-color: #b5d6a8; }
+      .badge.locked { opacity: .62; }
+      .badge-icon { font-size: 23px; line-height: 1; margin-bottom: 7px; }
+      .badge b { display: block; font-size: 12px; margin-bottom: 4px; }
+      .badge span { display: block; font-size: 10px; color: #657896; line-height: 1.35; }
       .tiny {
         font-size: 11px;
         color: #657896;
@@ -887,6 +906,9 @@
           grid-template-columns: 1fr;
         }
         .mastery-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        .badge-grid {
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
         .mapcard,
@@ -1220,7 +1242,7 @@
     <script src="js/resources-library.js?v=2026.09.11.3"></script>
     <script src="js/progress-guidance.js?v=2026.09.11.3"></script>
     <script src="js/storage-notice.js?v=2026.09.11.3"></script>
-    <script src="js/focused-set-builder.js?v=2026.09.11.4"></script>
+    <script src="js/focused-set-builder.js?v=2026.09.11.30"></script>
     <script src="js/knowledge-detail.js?v=2026.09.11.5"></script>
     <script src="js/knowledge-catalog.js?v=2026.09.11.10"></script>
     <script src="js/question-links.js?v=2026.09.11.6"></script>
