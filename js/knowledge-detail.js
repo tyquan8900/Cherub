@@ -79,7 +79,7 @@
     card.insertAdjacentHTML('beforeend', `<section aria-label="Visual references" style="margin-top:12px;padding:11px;border-radius:10px;background:#fffdf5;border:1px solid #f0dfad"><b style="font-size:13px">Open a visual reference</b><div style="display:grid;gap:5px;margin-top:8px">${visualRefs.map(ref => `<button data-visual-ref class="atlas-link" style="width:100%">${ref}<b>Open</b></button>`).join('')}</div></section>`);
     card.insertAdjacentHTML('beforeend', '<button class="enginebtn secondary" data-visual style="margin-top:10px">Open visual aid</button>');
     card.querySelector('[data-visual]').onclick = () => window.CherubVisualCatalog?.open(x.domain || c?.domain || 'D1');
-    card.querySelectorAll('[data-visual-ref]').forEach(button => button.onclick = () => window.CherubVisualCatalog?.open(x.domain || c?.domain || 'D1'));
+    card.querySelectorAll('[data-visual-ref]').forEach(button => button.onclick = () => window.CherubVisualCatalog?.open(x.domain || c?.domain || 'D1', button.textContent.replace('Open','').trim()));
     card.scrollIntoView({ behavior: "smooth", block: "nearest" });
     card.querySelector("[data-close]").onclick = () => card.remove();
     card.querySelectorAll("[data-related]").forEach((button) => button.onclick = () => window.dispatchEvent(new CustomEvent("cherub:knowledge", { detail: { domain: x.domain || "D1", concept: button.dataset.related } })));
