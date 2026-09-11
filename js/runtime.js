@@ -149,12 +149,12 @@ function badgeMark(id){return `<svg aria-hidden="true"><use href="assets/cherub-
 function earnedBadges(s){let timed=s.all.filter(x=>x.fresh!==false&&x.seconds!==undefined),pace=timed.length?timed.reduce((sum,x)=>sum+paceFactor(x.seconds),0)/timed.length:null,full=s.p.sessions.filter(x=>/^week/.test(x.mode)&&x.completed),recovered=Object.values(s.all.reduce((m,x)=>{(m[x.relation]||(m[x.relation]=[])).push(x);return m},{})).some(a=>a.some(x=>!x.ok)&&a.slice(-3).some(x=>x.ok)),all600=[1,2,3,4].every(d=>s.by[d].score!==null&&s.by[d].score>=600),all650=[1,2,3,4].every(d=>s.by[d].score!==null&&s.by[d].score>=650);return[
 [badgeMark('messenger'),'Messenger','Complete the protected diagnostic.',s.p.completedPretest],
 [badgeMark('angel'),'Angel','Answer 20 fresh questions across the map.',s.all.filter(x=>x.fresh!==false).length>=20],
-[badgeMark('power'),'Guardian','Complete three separate study sessions.',s.p.sessions.filter(x=>x.completed).length>=3],
-[badgeMark('herald'),'Herald','Maintain 80% high-confidence accuracy across 10 decisions.',s.cal!==null&&s.all.filter(x=>x.confidence>=75).length>=10&&s.cal>=.80],
-[badgeMark('archangel'),'Warrior','Maintain exam pace across 15 timed fresh questions.',timed.length>=15&&pace!==null&&pace>=.95],
-[badgeMark('authority'),'Minister','Turn a missed relationship into a later correct decision.',recovered],
+[badgeMark('herald'),'Herald','Complete three separate study sessions.',s.p.sessions.filter(x=>x.completed).length>=3],
+[badgeMark('watchman'),'Watchman','Maintain 80% high-confidence accuracy across 10 decisions.',s.cal!==null&&s.all.filter(x=>x.confidence>=75).length>=10&&s.cal>=.80],
+[badgeMark('power'),'Guardian','Maintain exam pace across 15 timed fresh questions.',timed.length>=15&&pace!==null&&pace>=.95],
+[badgeMark('archangel'),'Warrior','Turn a missed relationship into a later correct decision.',recovered],
 [badgeMark('ruler'),'Archangel','Build at least 10 fresh questions in every domain.',[1,2,3,4].every(d=>s.by[d].n>=10)],
-[badgeMark('throne'),'Throne','Complete one fresh weekly full exam.',full.length>=1],
+[badgeMark('ophanim'),'Ophanim','Complete one fresh weekly full exam.',full.length>=1],
 [badgeMark('cherub'),'Cherub','Earn 600+ in all four domains.',all600],
 [badgeMark('seraphim'),'Seraphim readiness','Earn 650+ in every domain and complete a full simulation.',all650&&full.length>=1]
 ]}
